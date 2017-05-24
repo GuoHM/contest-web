@@ -1,7 +1,12 @@
 #contest-web
 <h2>Introduction</h2>
-<p>This is a web application for the Shanghai Computer Application Contest,mainly for the enrollment and management of the contest for different kinds of users.</p>
+<p>This is a web application for the Shanghai Computer Application Contest,mainly for the enrollment and management of the contest for different kinds of users.
+</p>
 
+<h2>Environment</h2>
+<p>
+Hibernate 3.2+Spring 4.1+Struts2+MySQL
+</p>
 <h2>Update Information</h2>
 <table>
 <tr>
