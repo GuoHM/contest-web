@@ -24,6 +24,10 @@
 <td>2017.5.23</td>
 <td>Change all the html files into jsp files</td>
 </tr>
+<tr>
+<td>2017.5.24</td>
+<td>Upload the java beans files,properties,mapping files of the hibernate</td>
+</tr>
 </table>
 
 <h2>Author</h2>
