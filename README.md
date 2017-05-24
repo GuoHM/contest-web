@@ -26,7 +26,7 @@
 </tr>
 <tr>
 <td>2017.5.24</td>
-<td>Upload the java beans files,properties,mapping files of the hibernate</td>
+<td>Upload the java beans files,properties,mapping files of the hibernate,web configuration files and jars</td>
 </tr>
 </table>
 
