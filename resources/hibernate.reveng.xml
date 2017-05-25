@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="cac" match-name="admin_info"/>
+  <table-filter match-catalog="cac" match-name="login_info"/>
+  <table-filter match-catalog="cac" match-name="news"/>
+  <table-filter match-catalog="cac" match-name="normaluser"/>
+  <table-filter match-catalog="cac" match-name="school"/>
+  <table-filter match-catalog="cac" match-name="schooluser"/>
+  <table-filter match-catalog="cac" match-name="team"/>
+  <table-filter match-catalog="cac" match-name="teaminfo"/>
+  <table-filter match-catalog="cac" match-name="works_info"/>
+</hibernate-reverse-engineering>
