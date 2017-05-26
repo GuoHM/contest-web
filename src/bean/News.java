@@ -7,14 +7,14 @@ package bean;
 public class News implements java.io.Serializable {
 
 	private Integer newsId;
-	private AdminInfo adminInfo;
+	private Adminuser adminuser;
 	private String content;
 
 	public News() {
 	}
 
-	public News(AdminInfo adminInfo, String content) {
-		this.adminInfo = adminInfo;
+	public News(Adminuser adminInfo, String content) {
+		this.adminuser = adminInfo;
 		this.content = content;
 	}
 
@@ -26,12 +26,12 @@ public class News implements java.io.Serializable {
 		this.newsId = newsId;
 	}
 
-	public AdminInfo getAdminInfo() {
-		return this.adminInfo;
+	public Adminuser getAdminuser() {
+		return this.adminuser;
 	}
 
-	public void setAdminInfo(AdminInfo adminInfo) {
-		this.adminInfo = adminInfo;
+	public void setAdminuser(Adminuser adminUser) {
+		this.adminuser = adminUser;
 	}
 
 	public String getContent() {

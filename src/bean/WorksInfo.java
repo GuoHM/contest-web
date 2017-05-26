@@ -10,7 +10,7 @@ import java.util.Set;
 public class WorksInfo implements java.io.Serializable {
 
 	private Integer worksId;
-	private AdminInfo adminInfo;
+	private Adminuser adminuser;
 	private Schooluser schooluser;
 	private String description;
 	private String types;
@@ -20,17 +20,17 @@ public class WorksInfo implements java.io.Serializable {
 	public WorksInfo() {
 	}
 
-	public WorksInfo(AdminInfo adminInfo, Schooluser schooluser, String description, String types, String worksName) {
-		this.adminInfo = adminInfo;
+	public WorksInfo(Adminuser adminuser, Schooluser schooluser, String description, String types, String worksName) {
+		this.adminuser = adminuser;
 		this.schooluser = schooluser;
 		this.description = description;
 		this.types = types;
 		this.worksName = worksName;
 	}
 
-	public WorksInfo(AdminInfo adminInfo, Schooluser schooluser, String description, String types, String worksName,
+	public WorksInfo(Adminuser adminuser, Schooluser schooluser, String description, String types, String worksName,
 			Set teams) {
-		this.adminInfo = adminInfo;
+		this.adminuser = adminuser;
 		this.schooluser = schooluser;
 		this.description = description;
 		this.types = types;
@@ -46,12 +46,12 @@ public class WorksInfo implements java.io.Serializable {
 		this.worksId = worksId;
 	}
 
-	public AdminInfo getAdminInfo() {
-		return this.adminInfo;
+	public Adminuser getAdminuser() {
+		return this.adminuser;
 	}
 
-	public void setAdminInfo(AdminInfo adminInfo) {
-		this.adminInfo = adminInfo;
+	public void setAdminuser(Adminuser adminuser) {
+		this.adminuser = adminuser;
 	}
 
 	public Schooluser getSchooluser() {

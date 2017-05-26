@@ -34,7 +34,7 @@ public class NormaluserServiceImpl implements INormaluserService {
 	@Override
 	public void fillInfo(String userid, Normaluser user) throws Exception {
 		// TODO Auto-generated method stub
-		Normaluser input = normaluserDao.getNormaluserByUser(userid);
+		Normaluser input = normaluserDao.getNormaluserByUserid(userid);
 		input.setCollege(user.getCollege());
 		input.setEmail(user.getCollege());
 		input.setGrade(user.getGrade());
@@ -75,7 +75,7 @@ public class NormaluserServiceImpl implements INormaluserService {
 		 */
 		WorksInfo works = null;
 		works.setDescription(team.getId().getDescription());
-		Schooluser school = schoolDao.getSchooluserById(team.getId().getSchool());
+		Schooluser school = schoolDao.getSchooluserByUserid(team.getId().getSchool());
 		works.setSchooluser(school);
 		works.setTypes(team.getId().getTypes());
 		works.setWorksName(team.getId().getWorksName());
@@ -93,7 +93,7 @@ public class NormaluserServiceImpl implements INormaluserService {
 	@Override
 	public void modifyPassword(String user, String password) throws Exception {
 		// TODO Auto-generated method stub
-		Normaluser input = normaluserDao.getNormaluserByUser(user);
+		Normaluser input = normaluserDao.getNormaluserByUserid(user);
 		input.setPassword(password);
 		normaluserDao.save(input);
 	}
@@ -113,46 +113,44 @@ public class NormaluserServiceImpl implements INormaluserService {
 	}
 
 	/**
-	 * @return the schooldao
+	 * @return the schoolDao
 	 */
-	public ISchooluserDao getSchooldao() {
+	public ISchooluserDao getSchoolDao() {
 		return schoolDao;
 	}
 
 	/**
-	 * @param schooldao the schooldao to set
+	 * @param schoolDao the schoolDao to set
 	 */
-	public void setSchooldao(ISchooluserDao schooldao) {
-		this.schoolDao = schooldao;
+	public void setSchoolDao(ISchooluserDao schoolDao) {
+		this.schoolDao = schoolDao;
 	}
 
 	/**
-	 * @return the teamdao
+	 * @return the teamDao
 	 */
-	public ITeamDao getTeamdao() {
+	public ITeamDao getTeamDao() {
 		return teamDao;
 	}
 
 	/**
-	 * @param teamdao the teamdao to set
+	 * @param teamDao the teamDao to set
 	 */
-	public void setTeamdao(ITeamDao teamdao) {
-		this.teamDao = teamdao;
+	public void setTeamDao(ITeamDao teamDao) {
+		this.teamDao = teamDao;
 	}
 
 	/**
-	 * @return the worksdao
+	 * @return the worksDao
 	 */
-	public IWorksInfoDao getWorksdao() {
+	public IWorksInfoDao getWorksDao() {
 		return worksDao;
 	}
 
 	/**
-	 * @param worksdao the worksdao to set
+	 * @param worksDao the worksDao to set
 	 */
-	public void setWorksdao(IWorksInfoDao worksdao) {
-		this.worksDao = worksdao;
+	public void setWorksDao(IWorksInfoDao worksDao) {
+		this.worksDao = worksDao;
 	}
-
-	
 }

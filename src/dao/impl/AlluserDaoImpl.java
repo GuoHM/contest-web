@@ -12,7 +12,7 @@ public class AlluserDaoImpl extends HibernateDaoSupport implements IAlluserDao {
 	@Override
 	public LoginInfo getByLoginAndPassword(String login, String password) throws Exception {
 		// TODO Auto-generated method stub
-		String hql = "from LoginInfo where userId=? and password=?";
+		String hql = "from LoginInfo vi where vi.id.userId=? and vi.id.password=?";
 		Session session = null;
 		LoginInfo user = null;
 		try {

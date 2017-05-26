@@ -7,8 +7,8 @@ import dao.INormaluserDao;
 import service.IAlluserService;
 
 public class AlluserServiceImpl implements IAlluserService {
-	private IAlluserDao alldao;
-	private INormaluserDao normaluserdao;
+	private IAlluserDao allDao;
+	private INormaluserDao normaluserDao;
 
 	
 	/**
@@ -26,7 +26,7 @@ public class AlluserServiceImpl implements IAlluserService {
 		if(!isValid) {
 			return;
 		}
-		normaluserdao.save(user);
+		normaluserDao.save(user);
 	}
 
 	@Override
@@ -36,13 +36,13 @@ public class AlluserServiceImpl implements IAlluserService {
 		if(!isValid) {
 			return null;
 		}
-		return alldao.getByLoginAndPassword(login, password);
+		return allDao.getByLoginAndPassword(login, password);
 	}
 
 	@Override
 	public boolean isLoginValid(String login) throws Exception {
 		// TODO Auto-generated method stub
-		Normaluser user = normaluserdao.getNormaluserByUser(login);
+		Normaluser user = normaluserDao.getNormaluserByUserid(login);
 		if(user==null) {
 			return true;
 		} else {
@@ -51,32 +51,31 @@ public class AlluserServiceImpl implements IAlluserService {
 	}
 
 	/**
-	 * @return the alldao
+	 * @return the allDao
 	 */
-	public IAlluserDao getAlldao() {
-		return alldao;
+	public IAlluserDao getAllDao() {
+		return allDao;
 	}
 
 	/**
-	 * @param alldao the alldao to set
+	 * @param allDao the allDao to set
 	 */
-	public void setAlldao(IAlluserDao alldao) {
-		this.alldao = alldao;
+	public void setAllDao(IAlluserDao allDao) {
+		this.allDao = allDao;
 	}
 
 	/**
 	 * @return the normaluserDao
 	 */
 	public INormaluserDao getNormaluserDao() {
-		return normaluserdao;
+		return normaluserDao;
 	}
 
 	/**
 	 * @param normaluserDao the normaluserDao to set
 	 */
 	public void setNormaluserDao(INormaluserDao normaluserDao) {
-		this.normaluserdao = normaluserDao;
+		this.normaluserDao = normaluserDao;
 	}
-	
 
 }

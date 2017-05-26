@@ -7,7 +7,9 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.log4j.Logger;
 
 import bean.LoginInfo;
 import bean.Normaluser;
@@ -20,37 +22,40 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	private IAlluserService allService;
 	private INormaluserService normaluserService;
 	protected HttpServletRequest servletRequest = null;
+	Logger logger=Logger.getLogger(AllAction.class);
 	private String loginuser;
 	private String password;
+	private int type;
 	LoginInfo login;
-	Normaluser user;
+	Normaluser user;	
+	ActionContext context = ActionContext.getContext();
 
 	/**
-	 * @return the allservice
+	 * @return the allService
 	 */
-	public IAlluserService getAllservice() {
+	public IAlluserService getAllService() {
 		return allService;
 	}
 
 	/**
-	 * @param allservice the allservice to set
+	 * @param allService the allService to set
 	 */
-	public void setAllservice(IAlluserService allservice) {
-		this.allService = allservice;
+	public void setAllService(IAlluserService allService) {
+		this.allService = allService;
 	}
 
 	/**
-	 * @return the userservice
+	 * @return the normaluserService
 	 */
-	public INormaluserService getUserservice() {
+	public INormaluserService getNormaluserService() {
 		return normaluserService;
 	}
 
 	/**
-	 * @param userservice the userservice to set
+	 * @param normaluserService the normaluserService to set
 	 */
-	public void setUserservice(INormaluserService userservice) {
-		this.normaluserService = userservice;
+	public void setNormaluserService(INormaluserService normaluserService) {
+		this.normaluserService = normaluserService;
 	}
 
 	/**
@@ -65,6 +70,20 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	 */
 	public void setServletRequest(HttpServletRequest servletRequest) {
 		this.servletRequest = servletRequest;
+	}
+
+	/**
+	 * @return the logger
+	 */
+	public Logger getLogger() {
+		return logger;
+	}
+
+	/**
+	 * @param logger the logger to set
+	 */
+	public void setLogger(Logger logger) {
+		this.logger = logger;
 	}
 
 	/**
@@ -109,19 +128,35 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		this.login = login;
 	}
 
+	/**
+	 * @return the user
+	 */
+	public Normaluser getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(Normaluser user) {
+		this.user = user;
+	}
+
 	public String login() throws Exception {
 		LoginInfo login = null;
+		System.out.println(allService);
 		try {
 			login = allService.getUserByLoginAndPassword(loginuser, password);
 		} catch (Exception e) {
-			System.out.println(e);
+			logger.error(e);
 		}
 		if(login == null) {
 			addError("”√ªß√˚ªÚ√‹¬Î¥ÌŒÛ");
 			return INPUT;
 		}
+		context.getSession().put("user", login);
 		setLogin(login);
-		return SUCCESS;
+		return null;
 	}
 	
 	public String input() {
@@ -138,7 +173,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		try {
 			allService.addUser(user);
 		} catch (RuntimeException e) {
-			System.out.println(e);
+			logger.error(e);
 			servletRequest.setAttribute("fail", "◊¢≤· ß∞‹");
 			return INPUT;
 		}

@@ -10,7 +10,7 @@ import dao.ISchooluserDao;
 public class SchooluserDaoImpl extends HibernateDaoSupport implements ISchooluserDao {
 
 	@Override
-	public Schooluser getSchooluserById(String id) throws Exception {
+	public Schooluser getSchooluserByUserid(String id) throws Exception {
 		// TODO Auto-generated method stub
 		String hql;
 		hql = "from Schooluser where schooluserid=?";

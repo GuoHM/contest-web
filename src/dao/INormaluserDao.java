@@ -9,6 +9,6 @@ public interface INormaluserDao {
 	
 	Normaluser getNormaluserById(String id) throws Exception;
 	
-	Normaluser getNormaluserByUser(String user) throws Exception;
+	Normaluser getNormaluserByUserid(String user) throws Exception;
 	
 }
