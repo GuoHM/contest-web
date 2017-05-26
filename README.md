@@ -33,6 +33,10 @@ Hibernate 3.2+Spring 4.1+Struts2+MySQL
 <td>2017.5.24</td>
 <td>Upload the java beans files,properties,mapping files of the hibernate,web configuration files and jars</td>
 </tr>
+<tr>
+<td>2017.5.26</td>
+<td>Upload the service,action and struts configuration file,change the login and regist function</td>
+</tr>
 </table>
 
 <h2>Author</h2>
