@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-5-25 10:34:01 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="Normaluser" table="normaluser" catalog="cac">
+    <class name="bean.Normaluser" table="normaluser" catalog="cac">
         <id name="userId" type="string">
             <column name="user_id" length="15" />
             <generator class="assigned" />

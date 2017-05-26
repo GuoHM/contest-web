@@ -21,7 +21,6 @@
     http://www.springframework.org/schema/util  
     http://www.springframework.org/schema/util/spring-util.xsd"
     default-autowire="byName" default-lazy-init="true">
-
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}"></property>
 		<property name="url" value="${jdbc.url}"></property>
@@ -37,7 +36,7 @@
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="mappingDirectoryLocations">
 			<list>
-				<value>classpath:/config/hibernate-hbm</value>
+				<value>classpath*:/config/hibernate-hbm</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -63,7 +62,7 @@
 	
 	<aop:config proxy-target-class="true">
 	    <aop:advisor
-	        pointcut="execution(* com..*ServiceImpl.*(..))"
+	        pointcut="execution(* service.impl.*ServiceImpl.*(..))"
 	        advice-ref="txAdvice-demo"></aop:advisor>
 	</aop:config>
 	<tx:advice id="txAdvice-demo">

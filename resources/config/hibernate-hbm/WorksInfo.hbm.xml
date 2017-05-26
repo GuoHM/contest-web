@@ -3,15 +3,15 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-5-25 10:34:01 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="WorksInfo" table="works_info" catalog="cac">
+    <class name="bean.WorksInfo" table="works_info" catalog="cac">
         <id name="worksId" type="java.lang.Integer">
             <column name="works_id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="adminInfo" class="AdminInfo" fetch="select">
+        <many-to-one name="adminInfo" class="bean.Adminuser" fetch="select">
             <column name="admin_id" length="5" not-null="true" />
         </many-to-one>
-        <many-to-one name="schooluser" class="Schooluser" fetch="select">
+        <many-to-one name="schooluser" class="bean.Schooluser" fetch="select">
             <column name="schooluser_id" length="5" not-null="true" />
         </many-to-one>
         <property name="description" type="string">
@@ -27,7 +27,7 @@
             <key>
                 <column name="works_id" />
             </key>
-            <one-to-many class="Team" />
+            <one-to-many class="bean.Team" />
         </set>
     </class>
 </hibernate-mapping>

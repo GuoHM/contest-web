@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-5-25 10:34:01 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="School" table="school" catalog="cac">
+    <class name="bean.School" table="school" catalog="cac">
         <id name="universityNo" type="string">
             <column name="university_no" length="6" />
             <generator class="assigned" />

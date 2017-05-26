@@ -3,12 +3,12 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2017-5-25 10:34:01 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="Team" table="team" catalog="cac">
+    <class name="bean.Team" table="team" catalog="cac">
         <id name="teamNo" type="java.lang.Integer">
             <column name="team_no" />
             <generator class="identity" />
         </id>
-        <many-to-one name="worksInfo" class="WorksInfo" fetch="select">
+        <many-to-one name="worksInfo" class="bean.WorksInfo" fetch="select">
             <column name="works_id" />
         </many-to-one>
         <property name="teamName" type="string">
