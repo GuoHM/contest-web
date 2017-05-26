@@ -34,7 +34,7 @@ public class NormaluserDaoImpl extends HibernateDaoSupport implements INormaluse
 	}
 
 	@Override
-	public Normaluser getNormaluerByUser(String userId) throws Exception {
+	public Normaluser getNormaluserByUser(String userId) throws Exception {
 		// TODO Auto-generated method stub
 		String hql = "from Normaluser where userId=?";
 		Session session = null;
