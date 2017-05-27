@@ -6,6 +6,6 @@
 	<bean id="normaluserDao" class="dao.impl.NormaluserDaoImpl"></bean>
 	<bean id="schoolDao" class="dao.impl.SchooluserDaoImpl"></bean>
 	<bean id="teamDao" class="dao.impl.TeamDaoImpl"></bean>
-	<bean id="worksDao" class="dao.impl.WorksInfoDaoImpl"></bean>
-	<bean id="allDao" class="dao.impl.AlluserDaoImpl"></bean>
+	<bean id="worksDao" class="dao.impl.WorksDaoImpl"></bean>
+	<bean id="adminDao" class="dao.impl.AdminuserDaoImpl"></bean>
 </beans>

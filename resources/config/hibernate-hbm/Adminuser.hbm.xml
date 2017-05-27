@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-5-25 10:34:01 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-5-27 17:44:09 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="bean.Adminuser" table="admin_info" catalog="cac">
+    <class name="bean.Adminuser" table="adminuser" catalog="cac">
         <id name="adminId" type="string">
             <column name="admin_id" length="5" />
             <generator class="assigned" />
@@ -17,11 +17,11 @@
         <property name="phone" type="string">
             <column name="phone" length="11" not-null="true" />
         </property>
-        <set name="worksInfos" table="works_info" inverse="true" lazy="true" fetch="select">
+        <set name="workses" table="works" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="admin_id" length="5" not-null="true" />
             </key>
-            <one-to-many class="bean.WorksInfo" />
+            <one-to-many class="bean.Works" />
         </set>
         <set name="newses" table="news" inverse="true" lazy="true" fetch="select">
             <key>

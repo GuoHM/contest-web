@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017-5-25 10:34:01 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2017-5-27 17:44:09 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="bean.WorksInfo" table="works_info" catalog="cac">
+    <class name="bean.Works" table="works" catalog="cac">
         <id name="worksId" type="java.lang.Integer">
             <column name="works_id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="adminInfo" class="bean.Adminuser" fetch="select">
+        <many-to-one name="adminuser" class="bean.Adminuser" fetch="select">
             <column name="admin_id" length="5" not-null="true" />
         </many-to-one>
         <many-to-one name="schooluser" class="bean.Schooluser" fetch="select">
@@ -22,6 +22,9 @@
         </property>
         <property name="worksName" type="string">
             <column name="works_name" length="10" not-null="true" />
+        </property>
+        <property name="path" type="string">
+            <column name="path" length="45" not-null="true" />
         </property>
         <set name="teams" table="team" inverse="true" lazy="true" fetch="select">
             <key>

@@ -5,7 +5,9 @@
 <struts>
 	<package name="cac-root"  extends="struts-default" namespace="/" >
 		<action name="login" method="login" class="loginAction">
-			<result name="success">/NormalUserPages/NormalUser.jsp</result>
+			<result name="normal">/NormalUserPages/NormalUser.jsp</result>
+			<result name="school">/SchoolUserPages/SchoolUser.jsp</result>
+			<result name="admin">/AdminUserPages/AdminUser.jsp</result>
 			<result name="input">/login.jsp</result>
 		</action>
 	</package>
