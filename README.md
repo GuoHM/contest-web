@@ -37,6 +37,10 @@ Hibernate 3.2+Spring 4.1+Struts2+MySQL
 <td>2017.5.26</td>
 <td>Upload the service,action and struts configuration file,change the login and regist function,also fix some errors in hibernate</td>
 </tr>
+<tr>
+<td>2017.5.27</td>
+<td>Finish the login function,and some minor changes in the database and mapping files</td>
+</tr>
 </table>
 
 <h2>Author</h2>
