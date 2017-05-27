@@ -4,21 +4,78 @@ import bean.Normaluser;
 import bean.Schooluser;
 import bean.Team;
 import bean.Teaminfo;
-import bean.WorksInfo;
+import bean.Works;
 import dao.INormaluserDao;
 import dao.ISchooluserDao;
 import dao.ITeamDao;
-import dao.IWorksInfoDao;
-import dao.impl.SchooluserDaoImpl;
-import dao.impl.TeamDaoImpl;
-import dao.impl.WorksInfoDaoImpl;
+import dao.IWorksDao;
 import service.INormaluserService;
 
 public class NormaluserServiceImpl implements INormaluserService {
 	private INormaluserDao normaluserDao;
 	private ISchooluserDao schoolDao;
 	private ITeamDao teamDao;
-	private IWorksInfoDao worksDao;
+	private IWorksDao worksDao;
+
+	/**
+	 * @return the normaluserDao
+	 */
+	public INormaluserDao getNormaluserDao() {
+		return normaluserDao;
+	}
+
+	/**
+	 * @param normaluserDao
+	 *            the normaluserDao to set
+	 */
+	public void setNormaluserDao(INormaluserDao normaluserDao) {
+		this.normaluserDao = normaluserDao;
+	}
+
+	/**
+	 * @return the schoolDao
+	 */
+	public ISchooluserDao getSchoolDao() {
+		return schoolDao;
+	}
+
+	/**
+	 * @param schoolDao
+	 *            the schoolDao to set
+	 */
+	public void setSchoolDao(ISchooluserDao schoolDao) {
+		this.schoolDao = schoolDao;
+	}
+
+	/**
+	 * @return the teamDao
+	 */
+	public ITeamDao getTeamDao() {
+		return teamDao;
+	}
+
+	/**
+	 * @param teamDao
+	 *            the teamDao to set
+	 */
+	public void setTeamDao(ITeamDao teamDao) {
+		this.teamDao = teamDao;
+	}
+
+	/**
+	 * @return the worksDao
+	 */
+	public IWorksDao getWorksDao() {
+		return worksDao;
+	}
+
+	/**
+	 * @param worksDao
+	 *            the worksDao to set
+	 */
+	public void setWorksDao(IWorksDao worksDao) {
+		this.worksDao = worksDao;
+	}
 
 	/**
 	 * @Method fillInfo
@@ -29,7 +86,8 @@ public class NormaluserServiceImpl implements INormaluserService {
 	 *            an user object,transfer to another object which the userid
 	 *            equals the param userid.
 	 * @throws Exception
-	 * @see service.INormaluserService#fillInfo(java.lang.String, bean.Normaluser)
+	 * @see service.INormaluserService#fillInfo(java.lang.String,
+	 *      bean.Normaluser)
 	 */
 	@Override
 	public void fillInfo(String userid, Normaluser user) throws Exception {
@@ -50,7 +108,8 @@ public class NormaluserServiceImpl implements INormaluserService {
 
 	/**
 	 * @Method: enroll
-	 * @Description: finish the contest enrollment function,insert the data into 3 different tables.
+	 * @Description: finish the contest enrollment function,insert the data into
+	 *               3 different tables.
 	 * @param team
 	 *            the view which is from the input user
 	 * @throws Exception
@@ -65,7 +124,7 @@ public class NormaluserServiceImpl implements INormaluserService {
 		id[2] = team.getId().getId3();
 		/** change table Normaluser,set each students with a team_no */
 		for (int i = 0; i < id.length; i++) {
-			Normaluser user = null;
+			Normaluser user = new Normaluser();
 			user = normaluserDao.getNormaluserById(id[i]);
 			user.setTeamNo(team.getId().getTeamNo());
 			normaluserDao.save(user);
@@ -73,7 +132,7 @@ public class NormaluserServiceImpl implements INormaluserService {
 		/**
 		 * change table WorksInfo,set description,shooluser,types and worksname
 		 */
-		WorksInfo works = null;
+		Works works = new Works();
 		works.setDescription(team.getId().getDescription());
 		Schooluser school = schoolDao.getSchooluserByUserid(team.getId().getSchool());
 		works.setSchooluser(school);
@@ -83,7 +142,7 @@ public class NormaluserServiceImpl implements INormaluserService {
 		/**
 		 * change table Team,set team name,teacher,teacher_phone
 		 */
-		Team t = null;
+		Team t = new Team();
 		t.setTeacher(team.getId().getTeacher());
 		t.setTeacherPhone(team.getId().getTeacherPhone());
 		t.setTeamName(team.getId().getTeamName());
@@ -98,59 +157,34 @@ public class NormaluserServiceImpl implements INormaluserService {
 		normaluserDao.save(input);
 	}
 
-	/**
-	 * @return the normaluserDao
-	 */
-	public INormaluserDao getNormaluserDao() {
-		return normaluserDao;
+	@Override
+	public Normaluser getUserByLoginAndPassword(String login, String password) throws Exception {
+		// TODO Auto-generated method stub
+		boolean isValid = login != null && password != null;
+		if (!isValid) {
+			return null;
+		}
+		return normaluserDao.getByLoginAndPasswrod(login, password);
 	}
 
-	/**
-	 * @param normaluserDao the normaluserDao to set
-	 */
-	public void setNormaluserDao(INormaluserDao normaluserDao) {
-		this.normaluserDao = normaluserDao;
+	@Override
+	public void addUser(Normaluser user) throws Exception {
+		// TODO Auto-generated method stub
+		boolean isValid = user != null && user.getUserId() != null || !"".equals(user.getUserId()) && user.getPassword() != null && "".equals(user.getPassword());
+		if(!isValid) {
+			return;
+		}
+		normaluserDao.save(user);
 	}
 
-	/**
-	 * @return the schoolDao
-	 */
-	public ISchooluserDao getSchoolDao() {
-		return schoolDao;
-	}
-
-	/**
-	 * @param schoolDao the schoolDao to set
-	 */
-	public void setSchoolDao(ISchooluserDao schoolDao) {
-		this.schoolDao = schoolDao;
-	}
-
-	/**
-	 * @return the teamDao
-	 */
-	public ITeamDao getTeamDao() {
-		return teamDao;
-	}
-
-	/**
-	 * @param teamDao the teamDao to set
-	 */
-	public void setTeamDao(ITeamDao teamDao) {
-		this.teamDao = teamDao;
-	}
-
-	/**
-	 * @return the worksDao
-	 */
-	public IWorksInfoDao getWorksDao() {
-		return worksDao;
-	}
-
-	/**
-	 * @param worksDao the worksDao to set
-	 */
-	public void setWorksDao(IWorksInfoDao worksDao) {
-		this.worksDao = worksDao;
+	@Override
+	public boolean isLoginValid(String login) throws Exception {
+		// TODO Auto-generated method stub
+		Normaluser user = normaluserDao.getNormaluserByUserid(login);
+		if(user==null) {
+		return false;
+		} else {
+			return true;
+		}
 	}
 }

@@ -11,37 +11,118 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.Logger;
 
-import bean.LoginInfo;
+import bean.Adminuser;
 import bean.Normaluser;
-import service.IAlluserService;
+import bean.Schooluser;
+import service.IAdminuserService;
 import service.INormaluserService;
-
+import service.ISchooluserService;
 
 public class AllAction extends ActionSupport implements ServletRequestAware {
 
-	private IAlluserService allService;
 	private INormaluserService normaluserService;
+	private ISchooluserService schooluserService;
+	private IAdminuserService adminuserService;
 	protected HttpServletRequest servletRequest = null;
-	Logger logger=Logger.getLogger(AllAction.class);
+	Logger logger = Logger.getLogger(AllAction.class);
 	private String loginuser;
 	private String password;
 	private int type;
-	LoginInfo login;
-	Normaluser user;	
+	Schooluser school;
+	Adminuser admin;
+	Normaluser normal;
 	ActionContext context = ActionContext.getContext();
 
-	/**
-	 * @return the allService
-	 */
-	public IAlluserService getAllService() {
-		return allService;
+	public String login() throws Exception {
+		//LoginInfo login = null;
+		try {
+			switch (type) {
+			/**
+			 * normaluser login
+			 */
+			case 1: {
+				Normaluser normal = normaluserService.getUserByLoginAndPassword(loginuser, password);
+				if (normal == null) {
+					addError("用户名或密码错误");
+					return INPUT;
+				} else {
+					context.getSession().put("normaluser", normal);
+					System.out.println(context.getSession().get("normaluser"));
+					setNormal(normal);
+					return "normal";
+				}
+			}
+			/**
+			 * schooluser login
+			 */
+			case 2: {
+				Schooluser school = schooluserService.getUserByLoginAndPassword(loginuser, password);
+				if (school == null) {
+					addError("用户名或密码错误");
+					return INPUT;
+				} else {
+					context.getSession().put("schooluser", school);
+					setSchool(school);
+					return "school";
+				}
+			}
+			/**
+			 * adminuser login
+			 */
+			case 3: {
+				Adminuser admin = adminuserService.getUserByLoginAndPassword(loginuser, password);
+				if (admin == null) {
+					addError("用户名或密码错误");
+					return INPUT;
+				} else {
+					context.getSession().put("adminuser", admin);
+					setAdmin(admin);
+					return "admin";
+				}
+			}
+			default:
+				return INPUT;
+			}
+		} catch (Exception e) {
+			logger.error(e);
+		}
+		return INPUT;
 	}
 
-	/**
-	 * @param allService the allService to set
-	 */
-	public void setAllService(IAlluserService allService) {
-		this.allService = allService;
+	public String input() {
+		return INPUT;
+	}
+
+	public String regist() throws Exception {
+		Normaluser user = new Normaluser();
+		user.setUserId(loginuser);
+		user.setPassword(password);
+		try {
+			normaluserService.addUser(user);
+			context.getSession().put("normal", user);
+		} catch (RuntimeException e) {
+			logger.error(e);
+			servletRequest.setAttribute("fail", "注册失败");
+			return INPUT;
+		}
+		setNormal(user);
+		return "normal";
+	}
+
+	public String checkUser() throws Exception {
+		String cusName = servletRequest.getParameter("cusName");
+		boolean isNameValid = normaluserService.isLoginValid(cusName);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setHeader("Cache-Control", "no-store");
+		response.setHeader("Pragma", "no-cache");
+		response.setDateHeader("Expires", 0);
+		response.setContentType("text/html");
+		response.getWriter().write("{\"isNameValid\":" + isNameValid + "}");
+		return null;
+	}
+
+	public void addError(String errorKey) {
+		addActionError(getText(errorKey));
 	}
 
 	/**
@@ -56,6 +137,34 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	 */
 	public void setNormaluserService(INormaluserService normaluserService) {
 		this.normaluserService = normaluserService;
+	}
+
+	/**
+	 * @return the schooluserService
+	 */
+	public ISchooluserService getSchooluserService() {
+		return schooluserService;
+	}
+
+	/**
+	 * @param schooluserService the schooluserService to set
+	 */
+	public void setSchooluserService(ISchooluserService schooluserService) {
+		this.schooluserService = schooluserService;
+	}
+
+	/**
+	 * @return the adminuserService
+	 */
+	public IAdminuserService getAdminuserService() {
+		return adminuserService;
+	}
+
+	/**
+	 * @param adminuserService the adminuserService to set
+	 */
+	public void setAdminuserService(IAdminuserService adminuserService) {
+		this.adminuserService = adminuserService;
 	}
 
 	/**
@@ -115,86 +224,73 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	/**
-	 * @return the login
+	 * @return the type
 	 */
-	public LoginInfo getLogin() {
-		return login;
+	public int getType() {
+		return type;
 	}
 
 	/**
-	 * @param login the login to set
+	 * @param type the type to set
 	 */
-	public void setLogin(LoginInfo login) {
-		this.login = login;
+	public void setType(int type) {
+		this.type = type;
 	}
 
 	/**
-	 * @return the user
+	 * @return the school
 	 */
-	public Normaluser getUser() {
-		return user;
+	public Schooluser getSchool() {
+		return school;
 	}
 
 	/**
-	 * @param user the user to set
+	 * @param school the school to set
 	 */
-	public void setUser(Normaluser user) {
-		this.user = user;
+	public void setSchool(Schooluser school) {
+		this.school = school;
 	}
 
-	public String login() throws Exception {
-		LoginInfo login = null;
-		System.out.println(allService);
-		try {
-			login = allService.getUserByLoginAndPassword(loginuser, password);
-		} catch (Exception e) {
-			logger.error(e);
-		}
-		if(login == null) {
-			addError("用户名或密码错误");
-			return INPUT;
-		}
-		context.getSession().put("user", login);
-		setLogin(login);
-		return null;
+	/**
+	 * @return the admin
+	 */
+	public Adminuser getAdmin() {
+		return admin;
 	}
-	
-	public String input() {
-		return INPUT;
+
+	/**
+	 * @param admin the admin to set
+	 */
+	public void setAdmin(Adminuser admin) {
+		this.admin = admin;
 	}
-	
-	public String regist() throws Exception {
-		Normaluser user = new Normaluser();
-		user.setUserId(loginuser);
-		user.setPassword(password);
-		LoginInfo login = new LoginInfo();
-		login.getId().setUserId(loginuser);
-		login.getId().setPassword(password);
-		try {
-			allService.addUser(user);
-		} catch (RuntimeException e) {
-			logger.error(e);
-			servletRequest.setAttribute("fail", "注册失败");
-			return INPUT;
-		}
-		setLogin(login);
-		return SUCCESS;
+
+	/**
+	 * @return the normal
+	 */
+	public Normaluser getNormal() {
+		return normal;
 	}
-	
-	public String checkUser() throws Exception {
-		String cusName = servletRequest.getParameter("cusName");
-		boolean isNameValid = allService.isLoginValid(cusName);
-		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setHeader("Cache-Control", "no-store");
-		response.setHeader("Pragma", "no-cache");
-		response.setDateHeader("Expires", 0);
-		response.setContentType("text/html");
-		response.getWriter().write("{\"isNameValid\":" + isNameValid + "}");
-		return null;
+
+	/**
+	 * @param normal the normal to set
+	 */
+	public void setNormal(Normaluser normal) {
+		this.normal = normal;
 	}
-	
-	public void addError(String errorKey) {
-		addActionError(getText(errorKey));
+
+	/**
+	 * @return the context
+	 */
+	public ActionContext getContext() {
+		return context;
+	}
+
+	/**
+	 * @param context the context to set
+	 */
+	public void setContext(ActionContext context) {
+		this.context = context;
 	}
 
 }

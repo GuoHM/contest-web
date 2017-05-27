@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import dao.INormaluserDao;
 import dao.ISchooluserDao;
 import dao.ITeamDao;
-import dao.IWorksInfoDao;
+import dao.IWorksDao;
 import web.AllAction;
 
 public class test {
@@ -14,7 +14,7 @@ public class test {
 	public static INormaluserDao normaluserDao;
 	public static ISchooluserDao schoolDao;
 	public static ITeamDao teamDao;
-	public static IWorksInfoDao worksDao;
+	public static IWorksDao worksDao;
 
 	/**
 	 * @return the loginAction
@@ -75,14 +75,14 @@ public class test {
 	/**
 	 * @return the worksDao
 	 */
-	public static IWorksInfoDao getWorksDao() {
+	public static IWorksDao getWorksDao() {
 		return worksDao;
 	}
 
 	/**
 	 * @param worksDao the worksDao to set
 	 */
-	public static void setWorksDao(IWorksInfoDao worksDao) {
+	public static void setWorksDao(IWorksDao worksDao) {
 		test.worksDao = worksDao;
 	}
 

@@ -1,5 +1,5 @@
 package bean;
-// Generated 2017-5-25 10:33:00 by Hibernate Tools 3.5.0.Final
+// Generated 2017-5-27 17:44:09 by Hibernate Tools 3.5.0.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +14,7 @@ public class Schooluser implements java.io.Serializable {
 	private String name;
 	private String phone;
 	private String email;
-	private Set worksInfos = new HashSet(0);
+	private Set workses = new HashSet(0);
 
 	public Schooluser() {
 	}
@@ -26,13 +26,13 @@ public class Schooluser implements java.io.Serializable {
 		this.phone = phone;
 	}
 
-	public Schooluser(String schooluserId, String password, String name, String phone, String email, Set worksInfos) {
+	public Schooluser(String schooluserId, String password, String name, String phone, String email, Set workses) {
 		this.schooluserId = schooluserId;
 		this.password = password;
 		this.name = name;
 		this.phone = phone;
 		this.email = email;
-		this.worksInfos = worksInfos;
+		this.workses = workses;
 	}
 
 	public String getSchooluserId() {
@@ -75,12 +75,12 @@ public class Schooluser implements java.io.Serializable {
 		this.email = email;
 	}
 
-	public Set getWorksInfos() {
-		return this.worksInfos;
+	public Set getWorkses() {
+		return this.workses;
 	}
 
-	public void setWorksInfos(Set worksInfos) {
-		this.worksInfos = worksInfos;
+	public void setWorkses(Set workses) {
+		this.workses = workses;
 	}
 
 }

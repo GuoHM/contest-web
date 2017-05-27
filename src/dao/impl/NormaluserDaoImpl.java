@@ -3,11 +3,8 @@ package dao.impl;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+
 import bean.Normaluser;
-import bean.Schooluser;
-import bean.Team;
-import bean.Teaminfo;
-import bean.WorksInfo;
 import dao.INormaluserDao;
 
 public class NormaluserDaoImpl extends HibernateDaoSupport implements INormaluserDao {
@@ -42,6 +39,22 @@ public class NormaluserDaoImpl extends HibernateDaoSupport implements INormaluse
 		try {
 			session = getSession();
 			user = (Normaluser) session.createQuery(hql).setParameter(0, userId).uniqueResult();
+		} finally {
+			releaseSession(session);
+		}
+		return user;
+	}
+
+	@Override
+	public Normaluser getByLoginAndPasswrod(String login, String password) throws Exception {
+		// TODO Auto-generated method stub
+		String hql = "from Normaluser where userId=? and password=?";
+		Session session = null;
+		Normaluser user = null;
+		try {
+			session = getSession();
+			user = (Normaluser) session.createQuery(hql).setParameter(0, login).setParameter(1, password)
+					.uniqueResult();
 		} finally {
 			releaseSession(session);
 		}
