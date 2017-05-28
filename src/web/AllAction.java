@@ -49,7 +49,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 					addError("用户名或密码错误");
 					return INPUT;
 				} else {
-					context.getSession().put("normaluser", normal);
+					context.getSession().put("login", normal);
+					context.getSession().put("type", "1");
 					setNormal(normal);
 					return "normal";
 				}
@@ -63,7 +64,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 					addError("用户名或密码错误");
 					return INPUT;
 				} else {
-					context.getSession().put("schooluser", school);
+					context.getSession().put("login", school);
+					context.getSession().put("type", "2");
 					setSchool(school);
 					return "school";
 				}
@@ -77,7 +79,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 					addError("用户名或密码错误");
 					return INPUT;
 				} else {
-					context.getSession().put("adminuser", admin);
+					context.getSession().put("login", admin);
+					context.getSession().put("type", "3");
 					setAdmin(admin);
 					return "admin";
 				}
@@ -94,6 +97,12 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	public String input() {
 		return INPUT;
 	}
+	
+	public String logout() {
+		context.getSession().remove("login");
+		context.getSession().remove("type");
+		return SUCCESS;
+	}
 
 	public String regist() throws Exception {
 		Normaluser user = new Normaluser();
@@ -101,7 +110,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		user.setPassword(password);
 		try {
 			normaluserService.addUser(user);
-			context.getSession().put("normal", user);
+			context.getSession().put("login", user);
+			context.getSession().put("type", "1");
 		} catch (RuntimeException e) {
 			logger.error(e);
 			servletRequest.setAttribute("fail", "注册失败");
