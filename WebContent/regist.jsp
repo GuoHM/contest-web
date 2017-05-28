@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>登录</title>
+<title>注册</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="css/style.css">
@@ -53,28 +53,28 @@
 							<h2 class="text-center">注册</h2>
 						</div>
 					</div>
-					<form class="form-horizontal" role="form">
+					<form class="form-horizontal" role="form" onsubmit="return repeatPassword()" action="regist">
 						<div class="form-group text-center">
 							<label class="col-sm-3 control-label">用户名:</label>
 							<div class="col-sm-8 text-center">
-								<input type="text" class="form-control" />
+								<input type="text" class="form-control" name="loginuser" required="required"/>
 							</div>
 						</div>
 						<div class="form-group text-center">
 							<label class="col-sm-3 control-label">密码:</label>
 							<div class="col-sm-8 text-center">
-								<input type="password" class="form-control" />
+								<input type="password" class="form-control" name="password" required="required"/>
 							</div>
 						</div>
 						<div class="form-group text-center">
 							<label class="col-sm-3 control-label">重复密码:</label>
 							<div class="col-sm-8 text-center">
-								<input type="password" class="form-control" id="" />
+								<input type="password" class="form-control" name="passwordrepeat" required="required"/>
 							</div>
 						</div>
 						<div class="col-sm-offset-2 col-sm-10">
 							<label class="checkbox-inline">
-								<input type="submit" value="提交">
+								<input type="submit" value="提交" >
 							</label>
 							<label class="checkbox-inline">
 								<input type="reset" value="重置">

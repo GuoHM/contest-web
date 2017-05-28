@@ -18,3 +18,11 @@ $('#myAffix').affix({
     }
 })
 
+function repeatPassword() {
+    var p1 = document.getElementsByName("password");
+    var p2 = document.getElementsByName("passwordrepeat");
+    if (p1[0].value != p2[0].value) {
+	alert("两次输入密码不一致");
+    }
+
+}
