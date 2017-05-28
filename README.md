@@ -43,7 +43,7 @@ Hibernate 3.2+Spring 4.1+Struts2+MySQL
 </tr>
 <tr>
 <td>2017.5.28</td>
-<td>Imporve the login function and all the pages,add the struts interceptor</td>
+<td>Imporve the login function and all the pages,add the struts2 interceptor</td>
 </tr>
 </table>
 
