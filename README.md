@@ -41,6 +41,10 @@ Hibernate 3.2+Spring 4.1+Struts2+MySQL
 <td>2017.5.27</td>
 <td>Finish the login function,and some minor changes in the database and mapping files</td>
 </tr>
+<tr>
+<td>2017.5.28</td>
+<td>Imporve the login function and all the pages,add the struts interceptor</td>
+</tr>
 </table>
 
 <h2>Author</h2>
