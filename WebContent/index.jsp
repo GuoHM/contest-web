@@ -10,48 +10,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body onload="today()">
-	<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#" name="date"></a>
-		</div>
-		<div class="collapse navbar-collapse menubar-left">
-			<ul class="nav navbar-nav">
-				<li class="active">
-					<a href="index.jsp">
-						<span class="glyphicon glyphicon-home">首页</span>
-					</a>
-				</li>
-				<li>
-					<a href="news.jsp">
-						<span class="glyphicon glyphicon glyphicon-lock">比赛新闻</span>
-					</a>
-				</li>
-				<li>
-					<a href="info.jsp">
-						<span class="glyphicon glyphicon-book">比赛信息</span>
-					</a>
-				</li>
-			</ul>
-		</div>
-		<!-- /.nav-collapse -->
-		<div class="btn-group menubar-right">
-			<button type="button" class="btn btn-default">
-				<a href="regist.jsp">
-					<span class="glyphicon glyphicon-th-large">注册</span>
-				</a>
-			</button>
-			<button type="button" class="btn btn-default">
-				<a href="login.jsp">
-					<span class="glyphicon glyphicon-user">登录</span>
-				</a>
-			</button>
-		</div>
-	</div>
-
+	<jsp:include page="header.jsp" />
 	<div class="background-color">
 		<div class="container">
 			<div class="carousel slide carousel-size" id="carousel-871299">
@@ -136,13 +95,6 @@
 	</div>
 	</footer>
 
-	
-
-
-	<!-- jQuery (Bootstrap 插件需要引入) -->
-	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-	<!-- 包含了所有编译插件 -->
-	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
 </body>
 </html>

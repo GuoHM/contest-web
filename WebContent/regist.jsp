@@ -90,13 +90,11 @@
 			</div>
 		</div>
 	</div>
-	
-
 
 	<!-- jQuery (Bootstrap 插件需要引入) -->
-	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="js/jquery.min.js"></script>
 	<!-- 包含了所有编译插件 -->
-	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
 
 </body>

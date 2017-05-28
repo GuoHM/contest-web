@@ -87,7 +87,7 @@
 						</div>
 						<div class="col-sm-offset-2 col-sm-10">
 							<label class="checkbox-inline">
-								 <input type="submit" value="提交">
+								 <input type="submit" value="登录">
 							</label>
 							<label class="checkbox-inline">
 								<input type="reset" value="重置">
@@ -109,11 +109,10 @@
 		</div>
 	</div>
 
-
 	<!-- jQuery (Bootstrap 插件需要引入) -->
-	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src=js/jquery.min.js"></script>
 	<!-- 包含了所有编译插件 -->
-	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
 
 </body>
