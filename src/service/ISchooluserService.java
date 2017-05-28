@@ -1,6 +1,6 @@
 package service;
 
-import bean.Adminuser;
+
 import bean.Schooluser;
 
 public interface ISchooluserService {

@@ -1,7 +1,6 @@
 package dao;
 
 import bean.Normaluser;
-import bean.Teaminfo;
 
 public interface INormaluserDao {
 

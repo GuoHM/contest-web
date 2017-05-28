@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -19,7 +18,11 @@ import service.INormaluserService;
 import service.ISchooluserService;
 
 public class AllAction extends ActionSupport implements ServletRequestAware {
-
+	
+	/** 
+	* @Fields serialVersionUID : TODO
+	*/
+	private static final long serialVersionUID = 264830797784385859L;
 	private INormaluserService normaluserService;
 	private ISchooluserService schooluserService;
 	private IAdminuserService adminuserService;
@@ -47,7 +50,6 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 					return INPUT;
 				} else {
 					context.getSession().put("normaluser", normal);
-					System.out.println(context.getSession().get("normaluser"));
 					setNormal(normal);
 					return "normal";
 				}

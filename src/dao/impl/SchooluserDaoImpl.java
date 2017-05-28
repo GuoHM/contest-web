@@ -3,8 +3,6 @@ package dao.impl;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import bean.Adminuser;
-import bean.Normaluser;
 import bean.Schooluser;
 import dao.ISchooluserDao;
 
