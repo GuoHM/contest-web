@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="cac-root" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor name="login" class="filer.Interceptor"></interceptor>
+		</interceptors>
+		<global-results>
+		    <result name="error_login">login.jsp</result>
+		</global-results>
+		<action name="login" method="login" class="loginAction">
+			<result name="normal">/NormalUserPages/NormalUser.jsp</result>
+			<result name="school">/SchoolUserPages/SchoolUser.jsp</result>
+			<result name="admin">/AdminUserPages/AdminUser.jsp</result>
+			<result name="input">/login.jsp</result>
+			<interceptor-ref name="login"></interceptor-ref>
+		</action>
+	</package>
+</struts>
