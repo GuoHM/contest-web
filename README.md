@@ -45,6 +45,10 @@ Hibernate 3.2+Spring 4.1+Struts2+MySQL
 <td>2017.5.28</td>
 <td>Imporve the login function and all the pages,add the struts2 interceptor,add regist,logout function</td>
 </tr>
+<tr>
+<td>2017.5.29</td>
+<td>Imporve the login and regist function,finish the fill info function,add the validator for the regist and fill info pages</td>
+</tr>
 </table>
 
 <h2>Author</h2>
