@@ -8,4 +8,5 @@
 	<bean id="teamDao" class="dao.impl.TeamDaoImpl"></bean>
 	<bean id="worksDao" class="dao.impl.WorksDaoImpl"></bean>
 	<bean id="adminDao" class="dao.impl.AdminuserDaoImpl"></bean>
+	<bean id="getschoolDao" class="dao.impl.SchoolDaoImpl"></bean>
 </beans>
