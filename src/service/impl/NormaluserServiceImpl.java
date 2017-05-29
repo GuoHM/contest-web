@@ -17,93 +17,12 @@ public class NormaluserServiceImpl implements INormaluserService {
 	private ITeamDao teamDao;
 	private IWorksDao worksDao;
 
-	/**
-	 * @return the normaluserDao
-	 */
-	public INormaluserDao getNormaluserDao() {
-		return normaluserDao;
-	}
-
-	/**
-	 * @param normaluserDao
-	 *            the normaluserDao to set
-	 */
-	public void setNormaluserDao(INormaluserDao normaluserDao) {
-		this.normaluserDao = normaluserDao;
-	}
-
-	/**
-	 * @return the schoolDao
-	 */
-	public ISchooluserDao getSchoolDao() {
-		return schoolDao;
-	}
-
-	/**
-	 * @param schoolDao
-	 *            the schoolDao to set
-	 */
-	public void setSchoolDao(ISchooluserDao schoolDao) {
-		this.schoolDao = schoolDao;
-	}
-
-	/**
-	 * @return the teamDao
-	 */
-	public ITeamDao getTeamDao() {
-		return teamDao;
-	}
-
-	/**
-	 * @param teamDao
-	 *            the teamDao to set
-	 */
-	public void setTeamDao(ITeamDao teamDao) {
-		this.teamDao = teamDao;
-	}
-
-	/**
-	 * @return the worksDao
-	 */
-	public IWorksDao getWorksDao() {
-		return worksDao;
-	}
-
-	/**
-	 * @param worksDao
-	 *            the worksDao to set
-	 */
-	public void setWorksDao(IWorksDao worksDao) {
-		this.worksDao = worksDao;
-	}
-
-	/**
-	 * @Method fillInfo
-	 * @Description update the user information
-	 * @param userid
-	 *            the login id
-	 * @param user
-	 *            an user object,transfer to another object which the userid
-	 *            equals the param userid.
-	 * @throws Exception
-	 * @see service.INormaluserService#fillInfo(java.lang.String,
-	 *      bean.Normaluser)
-	 */
 	@Override
-	public void fillInfo(String userid, Normaluser user) throws Exception {
+	public void save(Normaluser user) throws Exception {
 		// TODO Auto-generated method stub
-		Normaluser input = normaluserDao.getNormaluserByUserid(userid);
-		input.setCollege(user.getCollege());
-		input.setEmail(user.getCollege());
-		input.setGrade(user.getGrade());
-		input.setId(user.getId());
-		input.setMajor(user.getMajor());
-		input.setName(user.getName());
-		input.setPhone(user.getPhone());
-		input.setSex(user.getSex());
-		input.setSno(user.getSno());
-		input.setId(user.getId());
-		normaluserDao.save(input);
+		if(user != null) {
+			normaluserDao.save(user);
+		}
 	}
 
 	/**
@@ -187,5 +106,66 @@ public class NormaluserServiceImpl implements INormaluserService {
 		} else {
 			return true;
 		}
+	}
+
+
+	/**
+	 * @return the normaluserDao
+	 */
+	public INormaluserDao getNormaluserDao() {
+		return normaluserDao;
+	}
+
+	/**
+	 * @param normaluserDao
+	 *            the normaluserDao to set
+	 */
+	public void setNormaluserDao(INormaluserDao normaluserDao) {
+		this.normaluserDao = normaluserDao;
+	}
+
+	/**
+	 * @return the schoolDao
+	 */
+	public ISchooluserDao getSchoolDao() {
+		return schoolDao;
+	}
+
+	/**
+	 * @param schoolDao
+	 *            the schoolDao to set
+	 */
+	public void setSchoolDao(ISchooluserDao schoolDao) {
+		this.schoolDao = schoolDao;
+	}
+
+	/**
+	 * @return the teamDao
+	 */
+	public ITeamDao getTeamDao() {
+		return teamDao;
+	}
+
+	/**
+	 * @param teamDao
+	 *            the teamDao to set
+	 */
+	public void setTeamDao(ITeamDao teamDao) {
+		this.teamDao = teamDao;
+	}
+
+	/**
+	 * @return the worksDao
+	 */
+	public IWorksDao getWorksDao() {
+		return worksDao;
+	}
+
+	/**
+	 * @param worksDao
+	 *            the worksDao to set
+	 */
+	public void setWorksDao(IWorksDao worksDao) {
+		this.worksDao = worksDao;
 	}
 }

@@ -9,7 +9,7 @@ public interface INormaluserService {
 
 	void enroll(Teaminfo team) throws Exception;
 
-	void fillInfo(String userid, Normaluser user) throws Exception;
+	void save(Normaluser user) throws Exception;
 
 	Normaluser getUserByLoginAndPassword(String login, String password) throws Exception;
 	

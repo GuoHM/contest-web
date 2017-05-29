@@ -1,9 +1,7 @@
 package web;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -109,8 +107,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 				context.getSession().put("login", user);
 				context.getSession().put("type", "1");
 			} catch (RuntimeException e) {
-				logger.error(e);
-				servletRequest.setAttribute("fail", "×¢²áÊ§°Ü");
+				addActionError("×¢²áÊ§°Ü");
 				return INPUT;
 			}
 			return "normal";
