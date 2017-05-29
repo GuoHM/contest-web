@@ -18,10 +18,10 @@ import service.INormaluserService;
 import service.ISchooluserService;
 
 public class AllAction extends ActionSupport implements ServletRequestAware {
-	
+
 	/** 
-	* @Fields serialVersionUID : TODO
-	*/
+	 * @Fields serialVersionUID : TODO
+	 */
 	private static final long serialVersionUID = 264830797784385859L;
 	private INormaluserService normaluserService;
 	private ISchooluserService schooluserService;
@@ -31,9 +31,6 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	private String loginuser;
 	private String password;
 	private int type;
-	Schooluser school;
-	Adminuser admin;
-	Normaluser normal;
 	ActionContext context = ActionContext.getContext();
 
 	public String login() throws Exception {
@@ -46,12 +43,11 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 			case 1: {
 				Normaluser normal = normaluserService.getUserByLoginAndPassword(loginuser, password);
 				if (normal == null) {
-					addError("用户名或密码错误");
+					addActionError("用户名或密码错误");
 					return INPUT;
 				} else {
 					context.getSession().put("login", normal);
 					context.getSession().put("type", "1");
-					setNormal(normal);
 					return "normal";
 				}
 			}
@@ -61,12 +57,11 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 			case 2: {
 				Schooluser school = schooluserService.getUserByLoginAndPassword(loginuser, password);
 				if (school == null) {
-					addError("用户名或密码错误");
+					addActionError("用户名或密码错误");
 					return INPUT;
 				} else {
 					context.getSession().put("login", school);
 					context.getSession().put("type", "2");
-					setSchool(school);
 					return "school";
 				}
 			}
@@ -76,12 +71,11 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 			case 3: {
 				Adminuser admin = adminuserService.getUserByLoginAndPassword(loginuser, password);
 				if (admin == null) {
-					addError("用户名或密码错误");
+					addActionError("用户名或密码错误");
 					return INPUT;
 				} else {
 					context.getSession().put("login", admin);
 					context.getSession().put("type", "3");
-					setAdmin(admin);
 					return "admin";
 				}
 			}
@@ -97,7 +91,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	public String input() {
 		return INPUT;
 	}
-	
+
 	public String logout() {
 		context.getSession().remove("login");
 		context.getSession().remove("type");
@@ -108,29 +102,22 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		Normaluser user = new Normaluser();
 		user.setUserId(loginuser);
 		user.setPassword(password);
-		try {
-			normaluserService.addUser(user);
-			context.getSession().put("login", user);
-			context.getSession().put("type", "1");
-		} catch (RuntimeException e) {
-			logger.error(e);
-			servletRequest.setAttribute("fail", "注册失败");
+		boolean isNameValid = normaluserService.isLoginValid(loginuser);
+		if( isNameValid) {
+			try {
+				normaluserService.addUser(user);
+				context.getSession().put("login", user);
+				context.getSession().put("type", "1");
+			} catch (RuntimeException e) {
+				logger.error(e);
+				servletRequest.setAttribute("fail", "注册失败");
+				return INPUT;
+			}
+			return "normal";
+		} else {
+			addActionError("该用户名已经注册");
 			return INPUT;
 		}
-		setNormal(user);
-		return "normal";
-	}
-
-	public String checkUser() throws Exception {
-		String cusName = servletRequest.getParameter("cusName");
-		boolean isNameValid = normaluserService.isLoginValid(cusName);
-		HttpServletResponse response = ServletActionContext.getResponse();
-		response.setHeader("Cache-Control", "no-store");
-		response.setHeader("Pragma", "no-cache");
-		response.setDateHeader("Expires", 0);
-		response.setContentType("text/html");
-		response.getWriter().write("{\"isNameValid\":" + isNameValid + "}");
-		return null;
 	}
 
 	public void addError(String errorKey) {
@@ -247,48 +234,6 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	 */
 	public void setType(int type) {
 		this.type = type;
-	}
-
-	/**
-	 * @return the school
-	 */
-	public Schooluser getSchool() {
-		return school;
-	}
-
-	/**
-	 * @param school the school to set
-	 */
-	public void setSchool(Schooluser school) {
-		this.school = school;
-	}
-
-	/**
-	 * @return the admin
-	 */
-	public Adminuser getAdmin() {
-		return admin;
-	}
-
-	/**
-	 * @param admin the admin to set
-	 */
-	public void setAdmin(Adminuser admin) {
-		this.admin = admin;
-	}
-
-	/**
-	 * @return the normal
-	 */
-	public Normaluser getNormal() {
-		return normal;
-	}
-
-	/**
-	 * @param normal the normal to set
-	 */
-	public void setNormal(Normaluser normal) {
-		this.normal = normal;
 	}
 
 	/**

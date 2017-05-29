@@ -170,8 +170,9 @@ public class NormaluserServiceImpl implements INormaluserService {
 	@Override
 	public void addUser(Normaluser user) throws Exception {
 		// TODO Auto-generated method stub
-		boolean isValid = user != null && user.getUserId() != null || !"".equals(user.getUserId()) && user.getPassword() != null && "".equals(user.getPassword());
-		if(!isValid) {
+		boolean isValid = user != null && user.getUserId() != null
+				|| !"".equals(user.getUserId()) && user.getPassword() != null && "".equals(user.getPassword());
+		if (!isValid) {
 			return;
 		}
 		normaluserDao.save(user);
@@ -181,8 +182,8 @@ public class NormaluserServiceImpl implements INormaluserService {
 	public boolean isLoginValid(String login) throws Exception {
 		// TODO Auto-generated method stub
 		Normaluser user = normaluserDao.getNormaluserByUserid(login);
-		if(user==null) {
-		return false;
+		if (user != null) {
+			return false;
 		} else {
 			return true;
 		}
