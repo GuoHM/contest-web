@@ -54,6 +54,8 @@
 							<h2 class="text-center">登录</h2>
 						</div>
 					</div>
+					<s:actionerror/>
+					<s:actionmessage/>
 					<s:form  method="POST" class="form-horizontal" role="form" action="login">
 					<s:fielderror></s:fielderror>
 						<div class="form-group text-center">

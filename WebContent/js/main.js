@@ -8,7 +8,7 @@ function today() {
     var day = date.getMonth() + 1;
     for (var i = 0; i < datenode.length; i++) {
 	datenode[i].innerHTML = "今天是" + date.getFullYear() + "年" + day + "月"
-		+ date.getDate() + "日";
+	+ date.getDate() + "日";
     }
 }
 
@@ -24,5 +24,4 @@ function repeatPassword() {
     if (p1[0].value != p2[0].value) {
 	alert("两次输入密码不一致");
     }
-
 }
