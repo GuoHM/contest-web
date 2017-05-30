@@ -49,6 +49,10 @@ Hibernate 3.2+Spring 4.1+Struts2+MySQL
 <td>2017.5.29</td>
 <td>Imporve the login and regist function,finish the fill info function,add the validator for the regist and fill info pages</td>
 </tr>
+<tr>
+<td>2017.5.30</td>
+<td>Finish info modify function</td>
+</tr>
 </table>
 
 <h2>Author</h2>
