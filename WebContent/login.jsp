@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -112,7 +112,7 @@
 	</div>
 
 	<!-- jQuery (Bootstrap 插件需要引入) -->
-	<script src=js/jquery.min.js"></script>
+	<script src="js/jquery.min.js"></script>
 	<!-- 包含了所有编译插件 -->
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>

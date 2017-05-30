@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -19,10 +19,7 @@
 					<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
 					<ul class="nav bs-docs-sidenav">
 						<li>
-							<a href="FillInfo.jsp" class="editor">个人信息填写</a>
-						</li>
-						<li>
-							<a href="ModifyInfo.jsp" class="elements">个人信息修改</a>
+							<a href="FillInfo.jsp" class="editor">个人信息填写/修改</a>
 						</li>
 						<li>
 							<a href="EnrollComp.jsp" class="widgets">报名参加比赛</a>

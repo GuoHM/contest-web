@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
 <%
 	String path = request.getContextPath();
@@ -25,10 +25,7 @@
 					<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
 					<ul class="nav bs-docs-sidenav">
 						<li>
-							<a href="<%=basePath%>/NormalUserPages/FillInfo.jsp" class="editor">个人信息填写</a>
-						</li>
-						<li>
-							<a href="<%=basePath%>/NormalUserPages/ModifyInfo.jsp" class="elements">个人信息修改</a>
+							<a href="<%=basePath%>/NormalUserPages/FillInfo.jsp" class="editor">个人信息填写/修改</a>
 						</li>
 						<li>
 							<a href="<%=basePath%>/NormalUserPages/EnrollComp.jsp" class="widgets">报名参加比赛</a>

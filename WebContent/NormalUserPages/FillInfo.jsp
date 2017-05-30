@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="bean.Normaluser"%>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,6 +12,10 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../css/bootstrapValidator.min.css">
+<%
+   Normaluser user = (Normaluser)session.getAttribute("login");
+   System.out.println(user.getMajor());
+%>
 </head>
 <body onload="today()">
 	<jsp:include page="../header.jsp" />
@@ -20,10 +26,7 @@
 					<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
 					<ul class="nav bs-docs-sidenav">
 						<li>
-							<a href="FillInfo.jsp" class="editor">个人信息填写</a>
-						</li>
-						<li>
-							<a href="ModifyInfo.jsp" class="elements">个人信息修改</a>
+							<a href="FillInfo.jsp" class="editor">个人信息填写/修改</a>
 						</li>
 						<li>
 							<a href="EnrollComp.jsp" class="widgets">报名参加比赛</a>
@@ -43,7 +46,7 @@
 						<div class="form-group">
 							<label class="col-sm-4 control-label">姓名</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" name="name" placeholder="请输入名字" required="required">
+								<input type="text" class="form-control" name="name" required="required" value="<%=user.getName()%>">
 							</div>
 						</div>
 						<div class="form-group">
@@ -85,37 +88,37 @@
 						<div class="form-group">
 							<label class="col-sm-4 control-label">专业</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" name="major" placeholder="请输入专业" required="required">
+								<input type="text" class="form-control" name="major" required="required" value="<%=user.getMajor()%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">学院</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" name="college" placeholder="请输入所属学院" required="required">
+								<input type="text" class="form-control" name="college" required="required" value="<%=user.getCollege()%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">身份证号</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" name="id" placeholder="请输入身份证" required="required">
+								<input type="text" class="form-control" name="id" required="required" value="<%=user.getId()%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">学号</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" name="sno" placeholder="请输入学号" required="required">
+								<input type="text" class="form-control" name="sno" required="required" value="<%=user.getSno()%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">联系电话</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" name="phone" placeholder="请输入电话" required="required">
+								<input type="text" class="form-control" name="phone" required="required" value="<%=user.getPhone()%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">EMAIL</label>
 							<div class="col-sm-7">
-								<input type="email" class="form-control" name="email" placeholder="请输入email" required="required">
+								<input type="email" class="form-control" name="email" required="required" value="<%=user.getEmail()%>">
 							</div>
 						</div>
 						<div class="form-group">
