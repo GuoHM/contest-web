@@ -28,7 +28,7 @@
 							<a href="<%=basePath%>/NormalUserPages/FillInfo.jsp" class="editor">个人信息填写/修改</a>
 						</li>
 						<li>
-							<a href="<%=basePath%>/NormalUserPages/EnrollComp.jsp" class="widgets">报名参加比赛</a>
+							<a href="<%=basePath%>/NormalUserPages/EnrollComp.jsp" class="widgets">报名比赛/修改报名信息</a>
 						</li>
 						<li>
 							<a href="<%=basePath%>/NormalUserPages/UploadWork.jsp" class="calendar">参赛作品上传</a>

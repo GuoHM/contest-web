@@ -14,9 +14,9 @@ $(document).ready(function() {/* 文档加载，执行一个函数*/
 			message: '用户名不能为空'
 		    },
 		    stringLength: {
-			min: 5,
+			min: 4,
 			max: 15,
-			message: '用户名长度必须在5到15之间'
+			message: '用户名长度必须在4到15之间'
 		    },
 		    regexp: {
 			regexp: /^[a-zA-Z0-9_\.]+$/,

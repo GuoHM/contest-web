@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#fillinfo').bootstrapValidator({
+    $('#enroll').bootstrapValidator({
 	message: 'This value is not valid',
 	feedbackIcons: {
 	    valid: 'glyphicon glyphicon-ok',
@@ -7,20 +7,46 @@ $(document).ready(function() {
 	    validating: 'glyphicon glyphicon-refresh'
 	},
 	fields: {
-	    username: {
+	    id1: {
 		validators: {
 		    stringLength: {
-			min: 6,
-			max: 15,
-			message: '用户名长度必须在6到15之间'
+			min: 15,
+			max: 18,
+			message: '身份证长度不合法'
 		    },
 		    regexp: {
-			regexp: /^[a-zA-Z0-9_\.]+$/,
-			message: '用户名由数字字母下划线和.组成'
+			regexp: /^\d{15}|\d{}18$/,
+			message: '请输入正确的身份证'
 		    }
 		}
 	    },
-	    phone: {
+	    id2: {
+		validators: {
+		    stringLength: {
+			min: 15,
+			max: 18,
+			message: '身份证长度不合法'
+		    },
+		    regexp: {
+			regexp: /^\d{15}|\d{}18$/,
+			message: '请输入正确的身份证'
+		    }
+		}
+	    },
+	    id3: {
+		validators: {
+		    stringLength: {
+			min: 15,
+			max: 18,
+			message: '身份证长度不合法'
+		    },
+		    regexp: {
+			regexp: /^\d{15}|\d{}18$/,
+			message: '请输入正确的身份证'
+		    }
+		}
+	    },
+	    teacherphone: {
 		message: '手机号不合法',
 		validators: {
 		    stringLength: {
@@ -34,17 +60,13 @@ $(document).ready(function() {
 		    }
 		}
 	    },
-	    id: {
+	    description: {
 		validators: {
 		    stringLength: {
-			min: 15,
-			max: 18,
-			message: '身份证长度不合法'
+			min: 0,
+			max: 100,
+			message: '请不要超过100字'
 		    },
-		    regexp: {
-			regexp: /^\d{15}|\d{}18$/,
-			message: '请输入正确的身份证'
-		    }
 		}
 	    },
 	}

@@ -22,7 +22,7 @@
 							<a href="FillInfo.jsp" class="editor">个人信息填写/修改</a>
 						</li>
 						<li>
-							<a href="EnrollComp.jsp" class="widgets">报名参加比赛</a>
+							<a href="EnrollComp.jsp" class="widgets">报名比赛/修改报名信息</a>
 						</li>
 						<li>
 							<a href="UploadWork.jsp" class="calendar">参赛作品上传</a>

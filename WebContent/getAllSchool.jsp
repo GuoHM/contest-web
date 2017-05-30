@@ -33,10 +33,10 @@
 <option value="10031">上海海关学院</option>
 <option value="10032">上海视觉艺术学院</option>
 <option value="10033">上海健康医学院</option>
-<option value="20001">上海医疗器械高等1学校</option>
-<option value="20002">上海出版印刷高等1学校</option>
-<option value="20003">上海医药高等1学校</option>
-<option value="20004">上海旅游高等1学校</option>
+<option value="20001">上海医疗器械高等学校</option>
+<option value="20002">上海出版印刷高等学校</option>
+<option value="20003">上海医药高等学校</option>
+<option value="20004">上海旅游高等学校</option>
 <option value="20005">上海电影艺术职业学院</option>
 <option value="20006">上海工商职业技术学院</option>
 <option value="20007">上海东海职业技术学院</option>
