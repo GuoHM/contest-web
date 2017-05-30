@@ -12,7 +12,7 @@
             <column name="works_id" />
         </many-to-one>
         <property name="teamName" type="string">
-            <column name="team_name" length="10" not-null="true" />
+            <column name="team_name" length="10" not-null="true" unique="true" />
         </property>
         <property name="teacher" type="string">
             <column name="teacher" length="10" not-null="true" />
