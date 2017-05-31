@@ -15,12 +15,6 @@
 <%
 	Normaluser user = (Normaluser) session.getAttribute("login");
 %>
-<script type="text/javascript">
-    $(function() {
-	$("#sex option[value='<%=user.getSex()%>']").attr("selected","selected");
-	$("#school option[value='<%=user.getUniversityNo()%>']").attr("selected","selected");
-    });
-</script>
 </head>
 <body onload="today()">
 	<jsp:include page="../header.jsp" />

@@ -1,6 +1,5 @@
 $(document).ready(function() {
     $('#fillinfo').bootstrapValidator({
-	message: 'This value is not valid',
 	feedbackIcons: {
 	    valid: 'glyphicon glyphicon-ok',
 	    invalid: 'glyphicon glyphicon-remove',

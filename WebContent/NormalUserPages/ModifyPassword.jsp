@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootstrapValidator.min.css">
 </head>
 
 <body onload="today()">
@@ -34,25 +36,27 @@
 					</nav>
 				</div>
 				<div class="col-xs-5 column">
-					<form class="form-horizontal" role="form" method="post">
+					<s:actionerror />
+					<s:actionmessage />
+					<form class="form-horizontal" role="form" method="post" id="modifyPwd" action="modifyPwd">
 						<div class="form-group">
 							<label class="col-sm-4 control-label">请输入旧密码</label>
 							<div class="col-sm-7">
-								<input type="password" class="form-control" name="name" placeholder="请输入旧密码"
+								<input type="password" class="form-control" name="password" placeholder="请输入旧密码"
 									required="required">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">请输入新密码</label>
 							<div class="col-sm-7">
-								<input type="password" class="form-control" name="name" placeholder="请输入新密码"
+								<input type="password" class="form-control" name="passwordnew" placeholder="请输入新密码"
 									required="required">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">请重复新密码</label>
 							<div class="col-sm-7">
-								<input type="password" class="form-control" name="name" placeholder="请重复新密码"
+								<input type="password" class="form-control" name="passwordrepeat" placeholder="请重复新密码"
 									required="required">
 							</div>
 						</div>
@@ -74,5 +78,7 @@
 	</div>
 
 	<script src="../js/main.js"></script>
+	<script src="../js/bootstrapValidator.min.js"></script>
+	<script src="../js/validator/modifyPwdValidator.js"></script>
 </body>
 </html>
