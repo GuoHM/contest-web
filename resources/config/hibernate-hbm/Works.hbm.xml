@@ -24,7 +24,7 @@
             <column name="works_name" length="10" not-null="true" />
         </property>
         <property name="path" type="string">
-            <column name="path" length="45" not-null="true" />
+            <column name="path" length="45" />
         </property>
         <set name="teams" table="team" inverse="true" lazy="true" fetch="select">
             <key>

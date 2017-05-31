@@ -33,5 +33,8 @@
 		    <result name="inputschool">/SchoolUserPages/ModifyPassword.jsp</result>
 		    <result name="inputadmin">/AdminUserPages/ModifyPassword.jsp</result>
 		</action>
+		<action name="enroll" method="enrollComp" class="normaluserAction">
+		    <result name="input">/NormalUserPages/EnrollComp.jsp</result>
+		</action>
 	</package>
 </struts>
