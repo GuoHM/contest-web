@@ -53,6 +53,7 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 			return INPUT;
 		}
 	}
+	
 
 	/**
 	 * @return the normaluserService

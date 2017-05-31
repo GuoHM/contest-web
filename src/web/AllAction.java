@@ -28,6 +28,7 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	Logger logger = Logger.getLogger(AllAction.class);
 	private String loginuser;
 	private String password;
+	private String passwordnew;
 	private int type;
 	ActionContext context = ActionContext.getContext();
 
@@ -115,6 +116,59 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 			addActionError("该用户名已经注册");
 			return INPUT;
 		}
+	}
+
+	public String modifyPwd() {
+		String type = (String) context.getSession().get("type");
+		try {
+			switch (type) {
+			/**
+			 * normaluser login
+			 */
+			case "1": {
+				Normaluser user = (Normaluser) context.getSession().get("login");
+				if(user.getPassword().equals(password)) {
+					user.setPassword(passwordnew);
+					normaluserService.save(user);
+					return "normal";
+				} else {
+					addActionError("旧密码错误，请重新输入");
+					return "inputnormal";
+				}
+			}
+			/**
+			 * schooluser login
+			 */
+			case "2": {
+				Schooluser user = (Schooluser) context.getSession().get("login");
+				if(user.getPassword().equals(password)) {
+					user.setPassword(passwordnew);
+					schooluserService.save(user);
+					return "school";
+				} else {
+					addActionError("旧密码错误，请重新输入");
+					return "inputschool";
+				}
+			}
+			/**
+			 * adminuser login
+			 */
+			case "3": {
+				Adminuser user = (Adminuser) context.getSession().get("login");
+				if(user.getPassword().equals(password)) {
+					user.setPassword(passwordnew);
+					adminuserService.save(user);
+					return "admin";
+				} else {
+					addActionError("旧密码错误，请重新输入");
+					return "inputadmin";
+				}
+			}
+			}
+		} catch (Exception e) {
+			logger.error(e);
+		}
+		return SUCCESS;
 	}
 
 	public void addError(String errorKey) {
@@ -245,6 +299,20 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 	 */
 	public void setContext(ActionContext context) {
 		this.context = context;
+	}
+
+	/**
+	 * @return the passwordnew
+	 */
+	public String getPasswordnew() {
+		return passwordnew;
+	}
+
+	/**
+	 * @param passwordnew the passwordnew to set
+	 */
+	public void setPasswordnew(String passwordnew) {
+		this.passwordnew = passwordnew;
 	}
 
 }

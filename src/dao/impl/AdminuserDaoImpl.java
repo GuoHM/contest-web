@@ -40,4 +40,10 @@ public class AdminuserDaoImpl extends HibernateDaoSupport implements IAdminuserD
 		return user;
 	}
 
+	@Override
+	public void save(Adminuser user) throws Exception {
+		// TODO Auto-generated method stub
+		getHibernateTemplate().saveOrUpdate(user);
+	}
+
 }

@@ -8,4 +8,6 @@ public interface ISchooluserDao {
 	
 	Schooluser getByLoginAndPassword(String login,String password) throws Exception;
 
+	void save(Schooluser user) throws Exception;
+
 }

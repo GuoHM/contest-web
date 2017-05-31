@@ -31,4 +31,12 @@ public class AdminuserServiceImpl implements IAdminuserService {
 		return adminDao.getByLoginAndPassword(login, password);
 	}
 
+	@Override
+	public void save(Adminuser user) throws Exception {
+		// TODO Auto-generated method stub
+		if(user != null) {
+			adminDao.save(user);
+		}
+	}
+
 }

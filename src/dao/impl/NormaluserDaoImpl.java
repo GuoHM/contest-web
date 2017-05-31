@@ -13,7 +13,6 @@ public class NormaluserDaoImpl extends HibernateDaoSupport implements INormaluse
 	public void save(Normaluser user) throws Exception {
 		// TODO Auto-generated method stub
 		getHibernateTemplate().saveOrUpdate(user);
-
 	}
 
 	@Override

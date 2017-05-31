@@ -40,4 +40,10 @@ public class SchooluserDaoImpl extends HibernateDaoSupport implements ISchooluse
 		return user;
 	}
 
+	@Override
+	public void save(Schooluser user) throws Exception {
+		// TODO Auto-generated method stub
+		getHibernateTemplate().saveOrUpdate(user);
+	}
+
 }
