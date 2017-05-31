@@ -6,6 +6,19 @@ $(document).ready(function() {
 	    validating: 'glyphicon glyphicon-refresh'
 	},
 	fields: {
+	    id: {
+		validators: {
+		    stringLength: {
+			min: 15,
+			max: 18,
+			message: '身份证长度不合法'
+		    },
+		    regexp: {
+			regexp: /^\d{15}|\d{}18$/,
+			message: '请输入正确的身份证'
+		    }
+		}
+	    },
 	    id1: {
 		validators: {
 		    stringLength: {
@@ -20,19 +33,6 @@ $(document).ready(function() {
 		}
 	    },
 	    id2: {
-		validators: {
-		    stringLength: {
-			min: 15,
-			max: 18,
-			message: '身份证长度不合法'
-		    },
-		    regexp: {
-			regexp: /^\d{15}|\d{}18$/,
-			message: '请输入正确的身份证'
-		    }
-		}
-	    },
-	    id3: {
 		validators: {
 		    stringLength: {
 			min: 15,

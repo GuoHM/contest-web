@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="bean.Normaluser"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +11,9 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/bootstrap.css">
 <link rel="stylesheet" href="../css/bootstrapValidator.min.css">
+<%
+	Normaluser user = (Normaluser)session.getAttribute("login");
+%>
 </head>
 <body onload="today()">
 	<jsp:include page="../header.jsp" />
@@ -43,12 +48,14 @@
 							2.每一位参赛队员必须先<strong>注册成为普通用户且填写好个人信息</strong>后，方可报名参赛
 						</p>
 					</div>
-					<form class="form-horizontal" role="form" method="post" id="enroll">
+					<s:actionerror />
+					<s:actionmessage />
+					<form class="form-horizontal" role="form" method="post" id="enroll" action="enroll">
 						<div class="form-group">
 							<label class="col-sm-4 control-label">队名</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="teamname" placeholder="请输入队名"
-									required="required">
+									required="required" >
 							</div>
 						</div>
 						<div class="form-group">
@@ -101,21 +108,21 @@
 						<div class="form-group">
 							<label class="col-sm-4 control-label">队员1身份证</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" name="id1" placeholder="请输入身份证" required="required">
+								<input type="text" class="form-control" name="id" placeholder="请输入身份证" required="required">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-sm-4 control-label">队员2身份证</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" name="id2" placeholder="请输入身份证" required="required">
+								<input type="text" class="form-control" name="id1" placeholder="请输入身份证" required="required">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-sm-4 control-label">队员3身份证</label>
 							<div class="col-sm-7">
-								<input type="text" class="form-control" name="id3" placeholder="请输入身份证" required="required">
+								<input type="text" class="form-control" name="id2" placeholder="请输入身份证" required="required">
 							</div>
 						</div>
 						<div class="form-group">
