@@ -9,11 +9,11 @@
 		</interceptors>
 		<global-results>
 			<result name="error_login">login.jsp</result>
-		</global-results>
-		<action name="login" method="login" class="allAction">
 			<result name="normal">/NormalUserPages/NormalUser.jsp</result>
 			<result name="school">/SchoolUserPages/SchoolUser.jsp</result>
 			<result name="admin">/AdminUserPages/AdminUser.jsp</result>
+		</global-results>
+		<action name="login" method="login" class="allAction">
 			<result name="input">/login.jsp</result>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<interceptor-ref name="checklogin"></interceptor-ref>
@@ -22,12 +22,16 @@
 			<result name="success">/index.jsp</result>
 		</action>
 		<action name="regist" method="regist" class="allAction">
-			<result name="normal">/NormalUserPages/NormalUser.jsp</result>
 			<result name="input">/regist.jsp</result>
 		</action>
 		<action name="fillInfo" method="fillInfo" class="normaluserAction">
 		    <result name="success">/NormalUserPages/NormalUser.jsp</result>
 		    <result name="input">/NormalUserPages/FillInfo.jsp</result>
+		</action>
+		<action name="modifyPwd" method="modifyPwd" class="allAction">
+		    <result name="inputnormal">/NormalUserPages/ModifyPassword.jsp</result>
+		    <result name="inputschool">/SchoolUserPages/ModifyPassword.jsp</result>
+		    <result name="inputadmin">/AdminUserPages/ModifyPassword.jsp</result>
 		</action>
 	</package>
 </struts>
