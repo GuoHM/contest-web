@@ -51,7 +51,11 @@ Hibernate 3.2+Spring 4.1+Struts2+MySQL
 </tr>
 <tr>
 <td>2017.5.30</td>
-<td>Finish info modify function</td>
+<td>Finish info modify function,imporve the pages</td>
+</tr>
+<tr>
+<td>2017.5.31</td>
+<td>Finish password modify function</td>
 </tr>
 </table>
 
