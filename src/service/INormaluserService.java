@@ -16,5 +16,7 @@ public interface INormaluserService {
 	boolean isLoginValid(String login) throws Exception;
 
 	void modifyPassword(String user, String password) throws Exception;
+	
+	Normaluser getUserById(String id) throws Exception;
 
 }

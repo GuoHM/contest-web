@@ -1,10 +1,12 @@
 package service.impl;
 
+import bean.Adminuser;
 import bean.Normaluser;
 import bean.Schooluser;
 import bean.Team;
 import bean.Teaminfo;
 import bean.Works;
+import dao.IAdminuserDao;
 import dao.INormaluserDao;
 import dao.ISchooluserDao;
 import dao.ITeamDao;
@@ -14,8 +16,23 @@ import service.INormaluserService;
 public class NormaluserServiceImpl implements INormaluserService {
 	private INormaluserDao normaluserDao;
 	private ISchooluserDao schoolDao;
+	private IAdminuserDao adminDao;
 	private ITeamDao teamDao;
 	private IWorksDao worksDao;
+
+	/**
+	 * @return the adminDao
+	 */
+	public IAdminuserDao getAdminDao() {
+		return adminDao;
+	}
+
+	/**
+	 * @param adminDao the adminDao to set
+	 */
+	public void setAdminDao(IAdminuserDao adminDao) {
+		this.adminDao = adminDao;
+	}
 
 	@Override
 	public void save(Normaluser user) throws Exception {
@@ -37,17 +54,6 @@ public class NormaluserServiceImpl implements INormaluserService {
 	@Override
 	public void enroll(Teaminfo team) throws Exception {
 		// TODO Auto-generated method stub
-		String[] id = new String[3];
-		id[0] = team.getId().getId1();
-		id[1] = team.getId().getId2();
-		id[2] = team.getId().getId3();
-		/** change table Normaluser,set each students with a team_no */
-		for (int i = 0; i < id.length; i++) {
-			Normaluser user = new Normaluser();
-			user = normaluserDao.getNormaluserById(id[i]);
-			user.setTeamNo(team.getId().getTeamNo());
-			normaluserDao.save(user);
-		}
 		/**
 		 * change table WorksInfo,set description,shooluser,types and worksname
 		 */
@@ -57,6 +63,8 @@ public class NormaluserServiceImpl implements INormaluserService {
 		works.setSchooluser(school);
 		works.setTypes(team.getId().getTypes());
 		works.setWorksName(team.getId().getWorksName());
+		Adminuser admin = adminDao.getAdminuserByUserid("31001");
+		works.setAdminuser(admin);
 		worksDao.save(works);
 		/**
 		 * change table Team,set team name,teacher,teacher_phone
@@ -65,7 +73,19 @@ public class NormaluserServiceImpl implements INormaluserService {
 		t.setTeacher(team.getId().getTeacher());
 		t.setTeacherPhone(team.getId().getTeacherPhone());
 		t.setTeamName(team.getId().getTeamName());
+		t.setWorks(works);
 		teamDao.save(t);
+		/** change table Normaluser,set each students with a team_no */
+		String[] id = new String[3];
+		id[0] = team.getId().getId1();
+		id[1] = team.getId().getId2();
+		id[2] = team.getId().getId3();
+		for (int i = 0; i < id.length; i++) {
+			Normaluser user = new Normaluser();
+			user = normaluserDao.getNormaluserById(id[i]);
+			user.setTeamNo(t.getTeamNo());
+			normaluserDao.save(user);
+		}
 	}
 
 	@Override
@@ -167,5 +187,11 @@ public class NormaluserServiceImpl implements INormaluserService {
 	 */
 	public void setWorksDao(IWorksDao worksDao) {
 		this.worksDao = worksDao;
+	}
+
+	@Override
+	public Normaluser getUserById(String id) throws Exception {
+		// TODO Auto-generated method stub
+		return normaluserDao.getNormaluserById(id);
 	}
 }

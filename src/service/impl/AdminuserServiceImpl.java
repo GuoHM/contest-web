@@ -39,4 +39,10 @@ public class AdminuserServiceImpl implements IAdminuserService {
 		}
 	}
 
+	@Override
+	public Adminuser gerUserByUserid(String id) throws Exception {
+		// TODO Auto-generated method stub
+		return adminDao.getAdminuserByUserid(id);
+	}
+
 }

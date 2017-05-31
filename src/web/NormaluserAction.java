@@ -9,6 +9,10 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import bean.Normaluser;
+import bean.Teaminfo;
+import bean.TeaminfoId;
+import dao.ITeamDao;
+import dao.IWorksDao;
 import service.INormaluserService;
 
 public class NormaluserAction extends ActionSupport implements ServletRequestAware {
@@ -18,6 +22,8 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 	 */
 	private static final long serialVersionUID = -7239588160980866877L;
 	private INormaluserService normaluserService;
+	private ITeamDao teamDao;
+	private IWorksDao worksDao;
 	protected HttpServletRequest servletRequest = null;
 	Logger logger = Logger.getLogger(AllAction.class);
 	ActionContext context = ActionContext.getContext();
@@ -31,29 +37,78 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 	private String sno;
 	private String phone;
 	private String email;
+	private String teamname;
+	private String worksname;
+	private String type;
+	private String id1;
+	private String id2;
+	private String teacher;
+	private String teacherphone;
+	private String description;
 
 	public String fillInfo() throws Exception {
 		Normaluser user = (Normaluser) context.getSession().get("login");
-		if(user != null) {
-		user.setName(name);
-		user.setSex(sex);
-		user.setCollege(college);
-		user.setEmail(email);
-		user.setGrade(grade);
-		user.setMajor(major);
-		user.setUniversityNo(school);
-		user.setSno(sno);
-		user.setId(id);
-		user.setPhone(phone);
-		normaluserService.save(user);
-		addActionMessage("修改成功");
-		return SUCCESS;
+		if (user != null) {
+			user.setName(name);
+			user.setSex(sex);
+			user.setCollege(college);
+			user.setEmail(email);
+			user.setGrade(grade);
+			user.setMajor(major);
+			user.setUniversityNo(school);
+			user.setSno(sno);
+			user.setId(id);
+			user.setPhone(phone);
+			normaluserService.save(user);
+			addActionMessage("修改成功");
+			return SUCCESS;
 		} else {
 			addActionError("登录异常");
 			return INPUT;
 		}
 	}
-	
+
+	public String enrollComp() throws Exception {
+		TeaminfoId infoid = new TeaminfoId();
+		if(teamDao.getTeamByName(teamname)!=null) {
+			addActionError("队名已存在");
+			return INPUT;
+		}
+		if(worksDao.getWorksByName(worksname)!=null) {
+			addActionError("作品名已存在");
+			return INPUT;
+		}
+		boolean isIdValid = normaluserService.getUserById(id) != null && normaluserService.getUserById(id1) != null
+				&& normaluserService.getUserById(id2) != null;
+		if (!isIdValid) {
+			addActionError("找不到队员信息，请确保3名参赛队员已经注册并填写完成个人信息");
+			return INPUT;
+		}
+		if(isEnroll(id,id1,id2)) {
+			addActionError("请确保3个队员都没有注册过其他队伍");
+			return INPUT;
+		}
+		infoid.setWorksName(worksname);
+		infoid.setTeacher(teacher);
+		infoid.setTeacherPhone(teacherphone);
+		infoid.setTeamName(teamname);
+		infoid.setTypes(type);
+		infoid.setSchool(school);
+		infoid.setDescription(description);
+		infoid.setId1(id);
+		infoid.setId2(id1);
+		infoid.setId3(id2);
+		Teaminfo info = new Teaminfo();
+		info.setId(infoid);
+		normaluserService.enroll(info);
+		return "normal";
+	}
+
+	private boolean isEnroll(String id, String id1, String id2) throws Exception {
+		return normaluserService.getUserById(id).getTeamNo() != null
+				|| normaluserService.getUserById(id1).getTeamNo() != null
+				|| normaluserService.getUserById(id2).getTeamNo() != null;
+	}
 
 	/**
 	 * @return the normaluserService
@@ -272,4 +327,152 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 		this.servletRequest = servletRequest;
 	}
 
+	/**
+	 * @return the teamname
+	 */
+	public String getTeamname() {
+		return teamname;
+	}
+
+	/**
+	 * @param teamname
+	 *            the teamname to set
+	 */
+	public void setTeamname(String teamname) {
+		this.teamname = teamname;
+	}
+
+	/**
+	 * @return the worksname
+	 */
+	public String getWorksname() {
+		return worksname;
+	}
+
+	/**
+	 * @param worksname
+	 *            the worksname to set
+	 */
+	public void setWorksname(String worksname) {
+		this.worksname = worksname;
+	}
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type
+	 *            the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	/**
+	 * @return the id1
+	 */
+	public String getId1() {
+		return id1;
+	}
+
+	/**
+	 * @param id1
+	 *            the id1 to set
+	 */
+	public void setId1(String id1) {
+		this.id1 = id1;
+	}
+
+	/**
+	 * @return the id2
+	 */
+	public String getId2() {
+		return id2;
+	}
+
+	/**
+	 * @param id2
+	 *            the id2 to set
+	 */
+	public void setId2(String id2) {
+		this.id2 = id2;
+	}
+
+	/**
+	 * @return the teacher
+	 */
+	public String getTeacher() {
+		return teacher;
+	}
+
+	/**
+	 * @param teacher
+	 *            the teacher to set
+	 */
+	public void setTeacher(String teacher) {
+		this.teacher = teacher;
+	}
+
+	/**
+	 * @return the teacherphone
+	 */
+	public String getTeacherphone() {
+		return teacherphone;
+	}
+
+	/**
+	 * @param teacherphone
+	 *            the teacherphone to set
+	 */
+	public void setTeacherphone(String teacherphone) {
+		this.teacherphone = teacherphone;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description
+	 *            the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the teamDao
+	 */
+	public ITeamDao getTeamDao() {
+		return teamDao;
+	}
+
+	/**
+	 * @param teamDao the teamDao to set
+	 */
+	public void setTeamDao(ITeamDao teamDao) {
+		this.teamDao = teamDao;
+	}
+
+	/**
+	 * @return the worksDao
+	 */
+	public IWorksDao getWorksDao() {
+		return worksDao;
+	}
+
+	/**
+	 * @param worksDao the worksDao to set
+	 */
+	public void setWorksDao(IWorksDao worksDao) {
+		this.worksDao = worksDao;
+	}
+	
 }

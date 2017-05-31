@@ -12,7 +12,7 @@ public class SchooluserDaoImpl extends HibernateDaoSupport implements ISchooluse
 	public Schooluser getSchooluserByUserid(String id) throws Exception {
 		// TODO Auto-generated method stub
 		String hql;
-		hql = "from Schooluser where schooluserid=?";
+		hql = "from Schooluser where schooluserId=?";
 		Session session = null;
 		Schooluser user = null;
 		try {
