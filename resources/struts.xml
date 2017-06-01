@@ -44,5 +44,9 @@
 		<action name="adminListStudent" method="listNormaluser" class="adminuserAction">
 		    <result name="success">/AdminUserPages/ListStudent.jsp</result>
 		</action>
+		
+		<action name="adminListSchooluser" method="listSchooluser" class="adminuserAction">
+		    <result name="success">/AdminUserPages/ListSchoolUsers.jsp</result>
+		</action>
 	</package>
 </struts>
