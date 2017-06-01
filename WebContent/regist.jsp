@@ -79,14 +79,14 @@
 						</div>
 						<div class="col-sm-offset-2 col-sm-10">
 							<label class="checkbox-inline">
-								<input type="submit" value="提交">
+								<input type="submit" value="提交" class="btn btn-default">
 							</label>
 							<label class="checkbox-inline">
-								<input type="reset" value="重置">
+								<input type="reset" value="重置" class="btn btn-default">
 							</label>
 							<label class="checkbox-inline">
 								<a href="index.jsp" style="color: black;">
-									<input type="button" value="返回">
+									<input type="button" value="返回" class="btn btn-default">
 								</a>
 							</label>
 						</div>

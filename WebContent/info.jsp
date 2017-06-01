@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="css/news-style.css">
 </head>
 <body onload="today()" data-spy="scroll" data-target="#myScrollspy">
-	<jsp:include page="header.jsp" />
+	<jsp:include page="UtilPages/header.jsp" />
 	<div class="maincontent">
 		<div class="container">
 			<div class="row clearfix">

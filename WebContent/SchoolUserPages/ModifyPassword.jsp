@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../css/bootstrapValidator.min.css">
 </head>
 <body onload="today()">
-	<jsp:include page="../header.jsp" />
+	<jsp:include page="../UtilPages/header.jsp" />
 	<div class="maincontent">
 		<div class="container">
 			<div class="row clearfix">
@@ -20,17 +20,18 @@
 					<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
 						<ul class="nav bs-docs-sidenav">
 							<li>
-								<a href="WorksInfo.jsp" class="editor">删查改报名信息</a>
+								<a href="WorksInfo.jsp">删查改报名信息</a>
 							</li>
 							<li>
-								<a href="ListStudent.jsp" class="elements">查看报名学生信息</a>
+								<a href="list.action">查看报名学生信息</a>
 							</li>
 							<li>
-								<a href="ModifyPassword.jsp" class="elements">修改密码</a>
+								<a href="ModifyPassword.jsp">修改密码</a>
 							</li>
 						</ul>
 					</nav>
 				</div>
+				
 				<div class="col-xs-5 column">
 					<form class="form-horizontal" role="form" method="post" id="modifyPwd" action="modifyPwd">
 						<s:actionerror />
@@ -60,10 +61,10 @@
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<label class="checkbox-inline">
-									<input type="submit" value="提交">
+									<input type="submit" value="提交"  class="btn btn-default">
 								</label>
 								<label class="checkbox-inline">
-									<input type="reset" value="重置">
+									<input type="reset" value="重置"  class="btn btn-default">
 								</label>
 							</div>
 						</div>

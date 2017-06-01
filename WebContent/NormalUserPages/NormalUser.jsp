@@ -17,7 +17,7 @@
 </head>
 
 <body onload="today()">
-	<jsp:include page="../header.jsp" />
+	<jsp:include page="../UtilPages/header.jsp" />
 	<div class="maincontent">
 		<div class="container">
 			<div class="row clearfix">
@@ -25,16 +25,16 @@
 					<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
 					<ul class="nav bs-docs-sidenav">
 						<li>
-							<a href="<%=basePath%>/NormalUserPages/FillInfo.jsp" class="editor">个人信息填写/修改</a>
+							<a href="<%=basePath%>/NormalUserPages/FillInfo.jsp">个人信息填写/修改</a>
 						</li>
 						<li>
-							<a href="<%=basePath%>/NormalUserPages/EnrollComp.jsp" class="widgets">报名比赛/修改报名信息</a>
+							<a href="<%=basePath%>/NormalUserPages/EnrollComp.jsp">报名比赛/修改报名信息</a>
 						</li>
 						<li>
-							<a href="<%=basePath%>/NormalUserPages/UploadWork.jsp" class="calendar">参赛作品上传</a>
+							<a href="<%=basePath%>/NormalUserPages/UploadWork.jsp">参赛作品上传</a>
 						</li>
 						<li>
-							<a href="<%=basePath%>/NormalUserPages/ModifyPassword.jsp" class="calendar">修改密码</a>
+							<a href="<%=basePath%>/NormalUserPages/ModifyPassword.jsp">修改密码</a>
 						</li>
 					</ul>
 					</nav>

@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body onload="today()">
-	<jsp:include page="header.jsp" />
+	<jsp:include page="UtilPages/header.jsp" />
 	<div class="background-color">
 		<div class="container">
 			<div class="carousel slide carousel-size" id="carousel-871299">

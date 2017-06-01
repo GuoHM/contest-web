@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="<%=basePath%>/css/bootstrap.css">
 </head>
 <body onload="today()">
-	<jsp:include page="../header.jsp" />
+	<jsp:include page="../UtilPages/header.jsp" />
 	<div class="maincontent">
 		<div class="container">
 			<div class="row clearfix">
@@ -22,13 +22,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
 					<ul class="nav bs-docs-sidenav">
 						<li>
-							<a href="<%=basePath%>/SchoolUserPages/WorksInfo.jsp" class="editor">删查改报名信息</a>
+							<a href="<%=basePath%>/SchoolUserPages/WorksInfo.jsp">删查改报名信息</a>
 						</li>
 						<li>
-							<a href="<%=basePath%>/SchoolUserPages/ListStudent.jsp" class="elements">查看报名学生信息</a>
+							<a href="list.action">查看报名学生信息</a>
 						</li>
 						<li>
-							<a href="<%=basePath%>/SchoolUserPages/ModifyPassword.jsp" class="elements">修改密码</a>
+							<a href="<%=basePath%>/SchoolUserPages/ModifyPassword.jsp">修改密码</a>
 						</li>
 					</ul>
 					</nav>
