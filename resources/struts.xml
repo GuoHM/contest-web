@@ -36,5 +36,13 @@
 		<action name="enroll" method="enrollComp" class="normaluserAction">
 		    <result name="input">/NormalUserPages/EnrollComp.jsp</result>
 		</action>
+		
+		<action name="list" method="listAll" class="schooluserAction">
+		    <result name="success">/SchoolUserPages/ListStudent.jsp</result>
+		</action>
+		
+		<action name="adminListStudent" method="listNormaluser" class="adminuserAction">
+		    <result name="success">/AdminUserPages/ListStudent.jsp</result>
+		</action>
 	</package>
 </struts>

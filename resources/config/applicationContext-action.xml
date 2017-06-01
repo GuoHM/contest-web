@@ -5,4 +5,6 @@
 	default-autowire="byName" default-lazy-init="true">
 	<bean id="allAction" class="web.AllAction" scope="prototype"></bean>
 	<bean id="normaluserAction" class="web.NormaluserAction" scope="prototype"></bean>
+	<bean id="schooluserAction" class="web.SchooluserAction" scope="prototype"></bean>
+	<bean id="adminuserAction" class="web.AdminuserAction" scope="prototype"></bean>
 </beans>
