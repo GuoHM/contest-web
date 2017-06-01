@@ -59,7 +59,7 @@ Hibernate 3.2+Spring 4.1+Struts2+MySQL
 </tr>
 <tr>
 <td>2017.6.1</td>
-<td>Minnor changes in the pages while finish list students function</td>
+<td>Minnor changes in the pages while finish list students and list schooluser function</td>
 </tr>
 </table>
 
