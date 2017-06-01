@@ -1,10 +1,7 @@
 package dao.impl;
 
-import java.util.List;
-
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
 
 import bean.School;
 import dao.ISchoolDao;
@@ -12,18 +9,19 @@ import dao.ISchoolDao;
 public class SchoolDaoImpl extends HibernateDaoSupport implements ISchoolDao {
 
 	@Override
-	public List<School> getAll() throws Exception {
+	public String getSchoolNameByNo(String school) throws Exception {
 		// TODO Auto-generated method stub
-		List<School> schoollist=null;
+		String hql;
+		hql = "from School where universityNo=?";
 		Session session = null;
-		String hql = "select new list(s.universityNO,s.universityName,s.univeristyType) from School s";
+		School user = null;
 		try {
 			session = getSession();
-			schoollist = session.createQuery(hql).list();
+			user = (School) session.createQuery(hql).setParameter(0, school).uniqueResult();
 		} finally {
 			releaseSession(session);
 		}
-		System.out.println(schoollist);
-		return schoollist;
+		return user.getUniversityName();
 	}
+
 }

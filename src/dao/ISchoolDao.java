@@ -6,6 +6,6 @@ import bean.School;
 
 public interface ISchoolDao {
 	
-	List<School> getAll() throws Exception;
+	String getSchoolNameByNo(String school) throws Exception;
 
 }

@@ -15,7 +15,7 @@ import service.INormaluserService;
 
 public class NormaluserServiceImpl implements INormaluserService {
 	private INormaluserDao normaluserDao;
-	private ISchooluserDao schoolDao;
+	private ISchooluserDao schooluserDao;
 	private IAdminuserDao adminDao;
 	private ITeamDao teamDao;
 	private IWorksDao worksDao;
@@ -59,7 +59,7 @@ public class NormaluserServiceImpl implements INormaluserService {
 		 */
 		Works works = new Works();
 		works.setDescription(team.getId().getDescription());
-		Schooluser school = schoolDao.getSchooluserByUserid(team.getId().getSchool());
+		Schooluser school = schooluserDao.getSchooluserByUserid(team.getId().getSchool());
 		works.setSchooluser(school);
 		works.setTypes(team.getId().getTypes());
 		works.setWorksName(team.getId().getWorksName());
@@ -148,15 +148,15 @@ public class NormaluserServiceImpl implements INormaluserService {
 	 * @return the schoolDao
 	 */
 	public ISchooluserDao getSchoolDao() {
-		return schoolDao;
+		return schooluserDao;
 	}
 
 	/**
 	 * @param schoolDao
 	 *            the schoolDao to set
 	 */
-	public void setSchoolDao(ISchooluserDao schoolDao) {
-		this.schoolDao = schoolDao;
+	public void setSchooluserDao(ISchooluserDao schoolDao) {
+		this.schooluserDao = schoolDao;
 	}
 
 	/**
@@ -192,6 +192,11 @@ public class NormaluserServiceImpl implements INormaluserService {
 	@Override
 	public Normaluser getUserById(String id) throws Exception {
 		// TODO Auto-generated method stub
-		return normaluserDao.getNormaluserById(id);
+		if (id!= null && !id.equals("")) {
+			return normaluserDao.getNormaluserById(id);
+		} else {
+			return null;
+		}
 	}
+
 }
