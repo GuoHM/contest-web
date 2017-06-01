@@ -24,7 +24,7 @@
 							<a href="ListStudent.jsp">查看报名学生信息</a>
 						</li>
 						<li>
-							<a href="ListSchoolUsers.jsp">查看所有学校负责人</a>
+							<a href="adminListSchooluser.action">查看所有学校负责人</a>
 						</li>
 						<li>
 							<a href="AddNews.jsp">新闻发布</a>
@@ -37,6 +37,10 @@
 						</li>
 					</ul>
 					</nav>
+				</div>
+				
+				<div class="col-xs-8 column">
+					<jsp:include page="../UtilPages/ListAllSchooluser.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>

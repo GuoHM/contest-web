@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="<%=basePath%>/AdminUserPages/ListStudent.jsp">查看报名学生信息</a>
 						</li>
 						<li>
-							<a href="<%=basePath%>/AdminUserPages/ListSchoolUsers.jsp">查看所有学校负责人</a>
+							<a href="adminListSchooluser.action">查看所有学校负责人</a>
 						</li>
 						<li>
 							<a href="<%=basePath%>/AdminUserPages/AddNews.jsp">新闻发布</a>
