@@ -29,7 +29,7 @@
 					<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
 						<ul class="nav bs-docs-sidenav">
 							<li>
-								<a href="<%=basePath%>/SchoolUserPages/WorksInfo.jsp">删查改报名信息</a>
+								<a href="schoolListTeaminfo.action">删查改报名信息</a>
 							</li>
 							<li>
 								<a href="list.action">查看报名学生信息</a>

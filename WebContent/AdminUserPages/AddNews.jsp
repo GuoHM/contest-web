@@ -20,53 +20,55 @@
 			<div class="row clearfix">
 				<div class="col-xs-2 column">
 					<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
-					<ul class="nav bs-docs-sidenav">
-						<li>
-							<a href="WorksInfo.jsp">删查改报名信息</a>
-						</li>
-						<li>
-							<a href="ListStudent.jsp">查看报名学生信息</a>
-						</li>
-						<li>
-							<a href="adminListSchooluser.action">查看所有学校负责人</a>
-						</li>
-						<li>
-							<a href="AddNews.jsp">新闻发布</a>
-						</li>
-						<li>
-							<a href="EditNews.jsp">新闻编辑</a>
-						</li>
-						<li>
-							<a href="ModifyPassword.jsp">修改密码</a>
-						</li>
-					</ul>
+						<ul class="nav bs-docs-sidenav">
+							<li>
+								<a href="WorksInfo.jsp">删查改报名信息</a>
+							</li>
+							<li>
+								<a href="ListStudent.jsp">查看报名学生信息</a>
+							</li>
+							<li>
+								<a href="adminListSchooluser.action">查看所有学校负责人</a>
+							</li>
+							<li>
+								<a href="AddNews.jsp">新闻发布</a>
+							</li>
+							<li>
+								<a href="EditNews.jsp">新闻编辑</a>
+							</li>
+							<li>
+								<a href="ModifyPassword.jsp">修改密码</a>
+							</li>
+						</ul>
 					</nav>
 				</div>
 
 				<div class="col-xs-8 column">
-					<form role="form">
+					<form class="form-horizontal" role="form" method="post" action="addNews">
 						<div class="form-group">
-							<label>名称</label>
-							<input type="text" class="form-control" id="name" placeholder="请输入名称">
+							<label>题目</label>
+							<input type="text" class="form-control" name="title" placeholder="请输入题目">
 						</div>
 						<div class="form-group">
-							<label>作者</label>
-							<input type="text" class="form-control" name="name" placeholder="请输入作者" required="required">
+							<label>简介</label>
+							<input type="text" class="form-control" name="summary" placeholder="请输入简介"
+								required="required">
 						</div>
 						<div class="form-group">
 							<label>正文</label>
-							<script id="container" name="content" type="text/plain"></script>
+							<textarea id="container" name="content"></textarea>
 							<script type="text/javascript">
-                            var ue = UE.getEditor('container');
-                        </script>
+				var ue = UE.getEditor('container');
+			    </script>
 						</div>
+						<input name="info" type="hidden" id="info">
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<label class="checkbox-inline">
-									<input type="submit" value="提交"  class="btn btn-default">
+									<input type="submit" value="提交" class="btn btn-default">
 								</label>
 								<label class="checkbox-inline">
-									<input type="reset" value="重置"  class="btn btn-default">
+									<input type="reset" value="重置" class="btn btn-default">
 								</label>
 							</div>
 						</div>
@@ -77,6 +79,11 @@
 	</div>
 
 	<script src="../js/main.js"></script>
+	<!-- 配置文件 -->
+	<script type="text/javascript" src="UEditor/ueditor.config.js"></script>
+	<!-- 编辑器源码文件 -->
+	<script type="text/javascript" src="UEditor/ueditor.all.js"></script>
+	
 </body>
 
 </html>

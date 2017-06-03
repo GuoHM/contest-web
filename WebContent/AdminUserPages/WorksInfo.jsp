@@ -1,4 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	String schoolname = (String) session.getAttribute("schoolname");
+    if(schoolname == null) {
+    	schoolname = "";
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +43,20 @@
 						</li>
 					</ul>
 					</nav>
+				</div>
+				
+				<div class="col-xs-10 column">
+					<form class="form-inline" role="form" action="adminlistTeaminfo">
+						<div class="form-group">
+							<select class="form-control" id="school" name="school">
+								<option value="0">所有</option>
+								<jsp:include page="../UtilPages/getAllSchool.jsp"></jsp:include>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-default">提交</button>
+					</form>
+					<h3><%=schoolname%></h3>
+					<jsp:include page="../UtilPages/ListAllTeams.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>
