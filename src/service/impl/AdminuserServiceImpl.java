@@ -2,10 +2,22 @@ package service.impl;
 
 import bean.Adminuser;
 import dao.IAdminuserDao;
+import dao.ITeaminfoDao;
 import service.IAdminuserService;
 
 public class AdminuserServiceImpl implements IAdminuserService {
 	private IAdminuserDao adminDao;
+	private ITeaminfoDao teaminfoDao;
+	
+	@Override
+	public Adminuser getUserByLoginAndPassword(String login, String password) throws Exception {
+		// TODO Auto-generated method stub
+		boolean isValid = login != null && password != null;
+		if(!isValid) {
+			return null;
+		}
+		return adminDao.getByLoginAndPassword(login, password);
+	}
 	
 	/**
 	 * @return the adminDao
@@ -21,15 +33,6 @@ public class AdminuserServiceImpl implements IAdminuserService {
 		this.adminDao = adminDao;
 	}
 
-	@Override
-	public Adminuser getUserByLoginAndPassword(String login, String password) throws Exception {
-		// TODO Auto-generated method stub
-		boolean isValid = login != null && password != null;
-		if(!isValid) {
-			return null;
-		}
-		return adminDao.getByLoginAndPassword(login, password);
-	}
 
 	@Override
 	public void save(Adminuser user) throws Exception {
@@ -43,6 +46,20 @@ public class AdminuserServiceImpl implements IAdminuserService {
 	public Adminuser gerUserByUserid(String id) throws Exception {
 		// TODO Auto-generated method stub
 		return adminDao.getAdminuserByUserid(id);
+	}
+
+	/**
+	 * @return the teaminfoDao
+	 */
+	public ITeaminfoDao getTeaminfoDao() {
+		return teaminfoDao;
+	}
+
+	/**
+	 * @param teaminfoDao the teaminfoDao to set
+	 */
+	public void setTeaminfoDao(ITeaminfoDao teaminfoDao) {
+		this.teaminfoDao = teaminfoDao;
 	}
 
 }

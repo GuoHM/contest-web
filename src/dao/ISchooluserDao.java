@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import bean.Schooluser;
 
 public interface ISchooluserDao {
@@ -9,5 +11,7 @@ public interface ISchooluserDao {
 	Schooluser getByLoginAndPassword(String login,String password) throws Exception;
 
 	void save(Schooluser user) throws Exception;
+	
+	List<Schooluser> getAllSchoolusers() throws Exception;
 
 }

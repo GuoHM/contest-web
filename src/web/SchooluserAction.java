@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import bean.Normaluser;
 import bean.Schooluser;
+import bean.Teaminfo;
 import dao.ISchoolDao;
 import service.ISchooluserService;
 
@@ -33,6 +34,13 @@ public class SchooluserAction  extends ActionSupport implements ServletRequestAw
 		String schoolname = schoolDao.getSchoolNameByNo(school.getSchooluserId());
 		context.getSession().put("userlist", list);
 		context.getSession().put("schoolname", schoolname);
+		return SUCCESS;
+	}
+	
+	public String listTeaminfo() throws Exception {
+		Schooluser school = (Schooluser) context.getSession().get("login");
+		List<Teaminfo> list = schooluserService.getTeaminfoBySchool(school.getSchooluserId());
+		context.getSession().put("teamslist", list);
 		return SUCCESS;
 	}
 

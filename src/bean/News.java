@@ -9,6 +9,8 @@ public class News implements java.io.Serializable {
 	private Integer newsId;
 	private Adminuser adminuser;
 	private String content;
+	private String title;
+	private String summary;
 
 	public News() {
 	}
@@ -40,6 +42,34 @@ public class News implements java.io.Serializable {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
+	 * @return the summary
+	 */
+	public String getSummary() {
+		return summary;
+	}
+
+	/**
+	 * @param summary the summary to set
+	 */
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 
 }

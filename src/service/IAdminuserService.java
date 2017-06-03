@@ -9,5 +9,7 @@ public interface IAdminuserService {
 	void save(Adminuser user) throws Exception;
 	
 	Adminuser gerUserByUserid(String id) throws Exception;
+	
+	
 
 }

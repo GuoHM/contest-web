@@ -10,10 +10,18 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import bean.Adminuser;
+import bean.News;
 import bean.Normaluser;
+import bean.Schooluser;
+import bean.Teaminfo;
+import dao.INewsDao;
 import dao.INormaluserDao;
 import dao.ISchoolDao;
+import dao.ISchooluserDao;
+import dao.ITeaminfoDao;
 import service.IAdminuserService;
+import service.ISchooluserService;
 
 public class AdminuserAction extends ActionSupport implements ServletRequestAware  {
 	
@@ -24,9 +32,16 @@ public class AdminuserAction extends ActionSupport implements ServletRequestAwar
 	protected HttpServletRequest servletRequest = null;
 	Logger logger = Logger.getLogger(AllAction.class);
 	private IAdminuserService adminuserService;
+	private ISchooluserService schooluserService;
 	private INormaluserDao normaluserDao;
+	private ISchooluserDao schooluserDao;
 	private ISchoolDao schoolDao;
+	private ITeaminfoDao teaminfoDao;
+	private INewsDao newsDao;
 	private String school;
+	private String title;
+	private String summary;
+	private String content;
 	ActionContext context = ActionContext.getContext();
 	
 	public String listNormaluser() throws Exception {
@@ -41,6 +56,39 @@ public class AdminuserAction extends ActionSupport implements ServletRequestAwar
 		String schoolname = schoolDao.getSchoolNameByNo(school);
 		context.getSession().put("userlist", list);
 		context.getSession().put("schoolname", schoolname);
+		return SUCCESS;
+	}
+	
+	public String listSchooluser() throws Exception {
+		List<Schooluser> list = schooluserDao.getAllSchoolusers();
+		context.getSession().put("schooluserlist", list);
+		return SUCCESS;
+	}
+	
+	public String listTeamsInfo() throws Exception {
+		if(school.equals("0")) {
+			List<Teaminfo> list = teaminfoDao.getAllTeams();
+			String schoolname = "所有学校";
+			context.getSession().put("teamslist", list);
+			context.getSession().put("schoolname", schoolname);
+			return SUCCESS;
+		}
+		List<Teaminfo> list = teaminfoDao.getTeamsBySchool(school);
+		String schoolname = schoolDao.getSchoolNameByNo(school);
+		context.getSession().put("teamslist", list);
+		context.getSession().put("schoolname", schoolname);
+		return SUCCESS;
+	}
+	
+	public String addNews() throws Exception {
+		Adminuser user = (Adminuser) context.getSession().get("login");
+		System.out.println(content);
+		News news = new News();
+		news.setTitle(title);
+		news.setContent(content);
+		news.setSummary(summary);
+		news.setAdminuser(user);
+		newsDao.save(news);
 		return SUCCESS;
 	}
 	/**
@@ -115,5 +163,104 @@ public class AdminuserAction extends ActionSupport implements ServletRequestAwar
 	public void setSchoolDao(ISchoolDao schoolDao) {
 		this.schoolDao = schoolDao;
 	}
+
+	/**
+	 * @return the schooluserDao
+	 */
+	public ISchooluserDao getSchooluserDao() {
+		return schooluserDao;
+	}
+
+	/**
+	 * @param schooluserDao the schooluserDao to set
+	 */
+	public void setSchooluserDao(ISchooluserDao schooluserDao) {
+		this.schooluserDao = schooluserDao;
+	}
+
+	/**
+	 * @return the schooluserService
+	 */
+	public ISchooluserService getSchooluserService() {
+		return schooluserService;
+	}
+
+	/**
+	 * @param schooluserService the schooluserService to set
+	 */
+	public void setSchooluserService(ISchooluserService schooluserService) {
+		this.schooluserService = schooluserService;
+	}
+
+	/**
+	 * @return the teaminfoDao
+	 */
+	public ITeaminfoDao getTeaminfoDao() {
+		return teaminfoDao;
+	}
+
+	/**
+	 * @param teaminfoDao the teaminfoDao to set
+	 */
+	public void setTeaminfoDao(ITeaminfoDao teaminfoDao) {
+		this.teaminfoDao = teaminfoDao;
+	}
+
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
+	 * @return the summary
+	 */
+	public String getSummary() {
+		return summary;
+	}
+
+	/**
+	 * @param summary the summary to set
+	 */
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+	/**
+	 * @return the newsDao
+	 */
+	public INewsDao getNewsDao() {
+		return newsDao;
+	}
+
+	/**
+	 * @param newsDao the newsDao to set
+	 */
+	public void setNewsDao(INewsDao newsDao) {
+		this.newsDao = newsDao;
+	}
+
+	/**
+	 * @return the content
+	 */
+	public String getContent() {
+		return content;
+	}
+
+	/**
+	 * @param content the content to set
+	 */
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
 	
 }
