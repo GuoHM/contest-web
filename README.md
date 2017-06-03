@@ -61,6 +61,10 @@ Hibernate 3.2+Spring 4.1+Struts2+MySQL
 <td>2017.6.1</td>
 <td>Minnor changes in the pages while finish list students and list schooluser function</td>
 </tr>
+<tr>
+<td>2017.6.3</td>
+<td>Add list works info and list schooluser function,change tables in the pages</td>
+</tr>
 </table>
 
 <h2>Author</h2>
