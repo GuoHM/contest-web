@@ -35,7 +35,7 @@
 					</nav>
 				</div>
 
-				<div class="col-xs-8 column">
+				<div class="col-xs-10 column">
 					<jsp:include page="../UtilPages/ListAllTeams.jsp"></jsp:include>
 				</div>
 			</div>

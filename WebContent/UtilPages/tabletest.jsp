@@ -13,7 +13,8 @@
 
 <div class="panel-body" style="padding-bottom: 0px;">
 
-	<table class="table table-hover" id="showWorksTable">
+	<table class="table table-hover" id="showWorksTable" data-pagination="true"
+		data-show-refresh="true" data-show-toggle="true" data-showColumns="true">
 		<thead>
 			<tr>
 				<th data-field="teamNo" data-sortable="true">队伍号</th>
@@ -32,7 +33,6 @@
 				ResourceBundle res = ResourceBundle.getBundle("school");
 				ResourceBundle type = ResourceBundle.getBundle("type");
 				List<Teaminfo> teamslist = (List) session.getAttribute("teamslist");
-				int i=1;
 				if (teamslist != null) {
 					for (Teaminfo n : teamslist) {
 						out.print("<tr>");
@@ -43,9 +43,8 @@
 						out.print("<td>" + res.getString(n.getId().getSchool()) + "</td>");
 						out.print("<td>" + n.getId().getTeacher() + "</td>");
 						out.print("<td>" + n.getId().getTeacherPhone() + "</td>");
-						out.print("<td><a  data-toggle=\"modal\" data-target=\"#modify\" onclick=\"modifyEnroll("+i+")\">修改</a></td>");
+						out.print("<td><a  data-toggle=\"modal\" data-target=\"#myModal\">编辑</a></td>");
 						out.print("</tr>");
-						i++;
 					}
 				}
 			%>
@@ -53,27 +52,23 @@
 	</table>
 
 
-	<script type="text/javascript">
-	   function onclick(n) {
-	       
-	   }
-	</script>
-
-
-	<div class="modal fade" id="modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 		aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">队伍信息</h4>
+					<h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
 				</div>
-				<jsp:include page="../UtilPages/EnrollPages.jsp"></jsp:include>
+				<div class="modal-body">在这里添加一些文本</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary">提交更改</button>
+				</div>
 			</div>
+			<!-- /.modal-content -->
 		</div>
-		<!-- /.modal-content -->
+		<!-- /.modal -->
 	</div>
-	<!-- /.modal -->
+
 </div>
-
-
