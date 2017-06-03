@@ -48,5 +48,17 @@
 		<action name="adminListSchooluser" method="listSchooluser" class="adminuserAction">
 		    <result name="success">/AdminUserPages/ListSchoolUsers.jsp</result>
 		</action>
+		
+		<action name="schoolListTeaminfo" method="listTeaminfo" class="schooluserAction">
+		    <result name="success">/SchoolUserPages/WorksInfo.jsp</result>
+		</action>
+		
+		<action name="adminlistTeaminfo" method="listTeamsInfo" class="adminuserAction">
+		    <result name="success">/AdminUserPages/WorksInfo.jsp</result>
+		</action>
+		
+		<action name="addNews" method="addNews" class="adminuserAction">
+		    <result name="success">/AdminUserPages/AdminUser.jsp</result>
+		</action>
 	</package>
 </struts>

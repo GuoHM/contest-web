@@ -14,5 +14,11 @@
         <property name="content" type="string">
             <column name="content" length="1500" not-null="true" />
         </property>
+        <property name="title" type="string">
+            <column name="title" length="25" not-null="true" />
+        </property>
+        <property name="summary" type="string">
+            <column name="summary" length="50" />
+        </property>
     </class>
 </hibernate-mapping>

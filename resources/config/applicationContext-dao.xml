@@ -9,4 +9,6 @@
 	<bean id="worksDao" class="dao.impl.WorksDaoImpl"></bean>
 	<bean id="adminDao" class="dao.impl.AdminuserDaoImpl"></bean>
 	<bean id="schoolDao" class="dao.impl.SchoolDaoImpl"></bean>
+	<bean id="teaminfoDao" class="dao.impl.TeaminfoDaoImpl"></bean>
+	<bean id="newsDao" class="dao.impl.NewsDaoImpl"></bean>
 </beans>
