@@ -12,6 +12,7 @@
 
 <script src="<%=basePath%>/js/bootstrap-table.js"></script>
 <script src="<%=basePath%>/js/bootstrap-table-zh-CN.js"></script>
+<script src="<%=basePath%>/js/initTable.js"></script>
 <link href="<%=basePath%>/css/bootstrap-table.css" rel="stylesheet" />
 
 <div class="panel-body" style="padding-bottom: 0px;">

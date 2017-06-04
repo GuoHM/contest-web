@@ -48,20 +48,4 @@ $(document).ready(function() {
 	    },
 	}
     })
-    .on('success.form.bv', function(e) {//点击提交之后
-	// Prevent form submission
-	e.preventDefault();
-
-	// Get the form instance
-	var $form = $(e.target);
-
-	// Get the BootstrapValidator instance
-	var bv = $form.data('bootstrapValidator');
-
-	// Use Ajax to submit form data 提交至form标签中的action，result自定义
-	$.post($form.attr('action'), $form.serialize(), function(result) {
-//	    do something...
-	});
-    });
-
 });

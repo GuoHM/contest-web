@@ -96,9 +96,7 @@
 		</div>
 	</div>
 
-	<!-- jQuery (Bootstrap 插件需要引入) -->
 	<script src="js/jquery.min.js"></script>
-	<!-- 包含了所有编译插件 -->
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/bootstrapValidator.min.js"></script>
