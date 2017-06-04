@@ -12,6 +12,7 @@ import bean.Normaluser;
 import bean.Teaminfo;
 import bean.TeaminfoId;
 import dao.ITeamDao;
+import dao.ITeaminfoDao;
 import dao.IWorksDao;
 import service.INormaluserService;
 
@@ -24,6 +25,7 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 	private INormaluserService normaluserService;
 	private ITeamDao teamDao;
 	private IWorksDao worksDao;
+	private ITeaminfoDao teaminfoDao;
 	protected HttpServletRequest servletRequest = null;
 	Logger logger = Logger.getLogger(AllAction.class);
 	ActionContext context = ActionContext.getContext();
@@ -69,23 +71,31 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 	}
 
 	public String enrollComp() throws Exception {
+		Normaluser user = (Normaluser) context.getSession().get("login");
+		Teaminfo team = teaminfoDao.getTeamInfoById(user.getId());
 		TeaminfoId infoid = new TeaminfoId();
-		if(teamDao.getTeamByName(teamname)!=null) {
-			addActionError("队名已存在");
-			return INPUT;
-		}
-		if(worksDao.getWorksByName(worksname)!=null) {
-			addActionError("作品名已存在");
-			return INPUT;
+		if (team == null) {
+			//no teaminfo record,add new record,do not need to set teamno
+			if (teamDao.getTeamByName(teamname) != null) {
+				addActionError("队名已存在");
+				return INPUT;
+			}
+			if (worksDao.getWorksByName(worksname) != null) {
+				addActionError("作品名已存在");
+				return INPUT;
+			}
+			if (isEnroll(id, id1, id2)) {
+				addActionError("请确保3个队员都没有注册过其他队伍");
+				return INPUT;
+			}
+		} else {
+			//already has record,is modify,set a teamno
+			infoid.setTeamNo(teaminfoDao.getTeamNoById(user.getId()));
 		}
 		boolean isIdValid = normaluserService.getUserById(id) != null && normaluserService.getUserById(id1) != null
 				&& normaluserService.getUserById(id2) != null;
 		if (!isIdValid) {
 			addActionError("找不到队员信息，请确保3名参赛队员已经注册并填写完成个人信息");
-			return INPUT;
-		}
-		if(isEnroll(id,id1,id2)) {
-			addActionError("请确保3个队员都没有注册过其他队伍");
 			return INPUT;
 		}
 		infoid.setWorksName(worksname);
@@ -104,10 +114,18 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 		return "normal";
 	}
 
+
 	private boolean isEnroll(String id, String id1, String id2) throws Exception {
 		return normaluserService.getUserById(id).getTeamNo() != null
 				|| normaluserService.getUserById(id1).getTeamNo() != null
 				|| normaluserService.getUserById(id2).getTeamNo() != null;
+	}
+
+	public String initEnroll() throws Exception {
+		Normaluser user = (Normaluser) context.getSession().get("login");
+		Teaminfo team = teaminfoDao.getTeamInfoById(user.getId());
+		context.getSession().put("team", team);
+		return SUCCESS;
 	}
 
 	/**
@@ -455,7 +473,8 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 	}
 
 	/**
-	 * @param teamDao the teamDao to set
+	 * @param teamDao
+	 *            the teamDao to set
 	 */
 	public void setTeamDao(ITeamDao teamDao) {
 		this.teamDao = teamDao;
@@ -469,10 +488,26 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 	}
 
 	/**
-	 * @param worksDao the worksDao to set
+	 * @param worksDao
+	 *            the worksDao to set
 	 */
 	public void setWorksDao(IWorksDao worksDao) {
 		this.worksDao = worksDao;
 	}
-	
+
+	/**
+	 * @return the teaminfoDao
+	 */
+	public ITeaminfoDao getTeaminfoDao() {
+		return teaminfoDao;
+	}
+
+	/**
+	 * @param teaminfoDao
+	 *            the teaminfoDao to set
+	 */
+	public void setTeaminfoDao(ITeaminfoDao teaminfoDao) {
+		this.teaminfoDao = teaminfoDao;
+	}
+
 }

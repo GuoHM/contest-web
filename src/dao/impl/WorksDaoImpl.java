@@ -29,6 +29,21 @@ public class WorksDaoImpl extends HibernateDaoSupport implements IWorksDao {
 		}
 		return works;
 	}
+
+	@Override
+	public Works getWorksByTeamNo(int teamno) throws Exception {
+		// TODO Auto-generated method stub
+		String hql = "from Works where teamNo=?";
+		Session session = null;
+		Works works = null;
+		try {
+			session = getSession();
+			works = (Works) session.createQuery(hql).setParameter(0, teamno).uniqueResult();
+		} finally {
+			releaseSession(session);
+		}
+		return works;
+	}
 	
 	
 

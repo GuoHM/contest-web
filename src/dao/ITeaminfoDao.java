@@ -10,5 +10,10 @@ public interface ITeaminfoDao {
 	
 	List<Teaminfo> getAllTeams() throws Exception;	
 	
-
+	Teaminfo getTeamInfoById(String id) throws Exception;
+	
+	Teaminfo getTeamInfoByTeamNo(String teamno) throws Exception;
+	
+	int getTeamNoById(String id) throws Exception;
+	
 }

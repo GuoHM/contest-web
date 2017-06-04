@@ -42,6 +42,67 @@ public class TeaminfoDaoImpl extends HibernateDaoSupport implements ITeaminfoDao
 		}
 		return list;
 	}
+
+	@Override
+	public Teaminfo getTeamInfoById(String id) throws Exception {
+		// TODO Auto-generated method stub
+		String hql;
+		hql = "from Teaminfo t where t.id.id1=?";
+		Session session = null;
+		Teaminfo team = null;
+		try {
+			session = getSession();
+			team =  (Teaminfo) session.createQuery(hql).setParameter(0, id).uniqueResult();
+		} finally {
+			releaseSession(session);
+		}
+		if (team != null) {
+			return team;
+		}
+		hql = "from Teaminfo t where t.id.id2=?";
+		try {
+			session = getSession();
+			team =  (Teaminfo) session.createQuery(hql).setParameter(0, id).uniqueResult();
+		} finally {
+			releaseSession(session);
+		}
+		if (team != null) {
+			return team;
+		}
+		hql = "from Teaminfo t where t.id.id3=?";
+		try {
+			session = getSession();
+			team =  (Teaminfo) session.createQuery(hql).setParameter(0, id).uniqueResult();
+		} finally {
+			releaseSession(session);
+		}
+		if (team != null) {
+			return team;
+		}
+		return null;
+	}
+
+	@Override
+	public Teaminfo getTeamInfoByTeamNo(String teamno) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getTeamNoById(String id) throws Exception {
+		// TODO Auto-generated method stub
+		String hql;
+		hql = "from Teaminfo t where t.id.id1=?";
+		Session session = null;
+		Teaminfo team = null;
+		try {
+			session = getSession();
+			team =  (Teaminfo) session.createQuery(hql).setParameter(0, id).uniqueResult();
+		} finally {
+			releaseSession(session);
+		}
+		return team.getId().getTeamNo();
+	}
 	
 	
 

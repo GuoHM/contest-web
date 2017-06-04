@@ -28,7 +28,8 @@ public class NormaluserServiceImpl implements INormaluserService {
 	}
 
 	/**
-	 * @param adminDao the adminDao to set
+	 * @param adminDao
+	 *            the adminDao to set
 	 */
 	public void setAdminDao(IAdminuserDao adminDao) {
 		this.adminDao = adminDao;
@@ -37,7 +38,7 @@ public class NormaluserServiceImpl implements INormaluserService {
 	@Override
 	public void save(Normaluser user) throws Exception {
 		// TODO Auto-generated method stub
-		if(user != null) {
+		if (user != null) {
 			normaluserDao.save(user);
 		}
 	}
@@ -57,7 +58,11 @@ public class NormaluserServiceImpl implements INormaluserService {
 		/**
 		 * change table WorksInfo,set description,shooluser,types and worksname
 		 */
-		Works works = new Works();
+		Works works = worksDao.getWorksByTeamNo(team.getId().getTeamNo());
+		if (works == null) {
+			// is add
+			works = new Works();
+		}
 		works.setDescription(team.getId().getDescription());
 		Schooluser school = schooluserDao.getSchooluserByUserid(team.getId().getSchool());
 		works.setSchooluser(school);
@@ -69,7 +74,10 @@ public class NormaluserServiceImpl implements INormaluserService {
 		/**
 		 * change table Team,set team name,teacher,teacher_phone
 		 */
-		Team t = new Team();
+		Team t = teamDao.getTeamByTeamNo(team.getId().getTeamNo());
+		if (t == null) {
+			t = new Team();
+		}
 		t.setTeacher(team.getId().getTeacher());
 		t.setTeacherPhone(team.getId().getTeacherPhone());
 		t.setTeamName(team.getId().getTeamName());
@@ -81,8 +89,7 @@ public class NormaluserServiceImpl implements INormaluserService {
 		id[1] = team.getId().getId2();
 		id[2] = team.getId().getId3();
 		for (int i = 0; i < id.length; i++) {
-			Normaluser user = new Normaluser();
-			user = normaluserDao.getNormaluserById(id[i]);
+			Normaluser user = normaluserDao.getNormaluserById(id[i]);
 			user.setTeamNo(t.getTeamNo());
 			normaluserDao.save(user);
 		}
@@ -127,7 +134,6 @@ public class NormaluserServiceImpl implements INormaluserService {
 			return true;
 		}
 	}
-
 
 	/**
 	 * @return the normaluserDao
@@ -192,7 +198,7 @@ public class NormaluserServiceImpl implements INormaluserService {
 	@Override
 	public Normaluser getUserById(String id) throws Exception {
 		// TODO Auto-generated method stub
-		if (id!= null && !id.equals("")) {
+		if (id != null && !id.equals("")) {
 			return normaluserDao.getNormaluserById(id);
 		} else {
 			return null;
