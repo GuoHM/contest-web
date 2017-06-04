@@ -15,6 +15,12 @@
 <%
 	Normaluser user = (Normaluser) session.getAttribute("login");
 %>
+<%!public String change(String s) {
+		if (s != null) {
+			return s;
+		}
+		return "";
+	}%>
 </head>
 <body onload="today()">
 	<jsp:include page="../UtilPages/header.jsp" />
@@ -46,7 +52,7 @@
 							<label class="col-sm-4 control-label">姓名</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="name" required="required"
-									value="<%=user.getName()%>">
+									value="<%=change(user.getName())%>">
 							</div>
 						</div>
 						<div class="form-group">
@@ -89,42 +95,42 @@
 							<label class="col-sm-4 control-label">专业</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="major" required="required"
-									value="<%=user.getMajor()%>">
+									value="<%=change(user.getMajor())%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">学院</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="college" required="required"
-									value="<%=user.getCollege()%>">
+									value="<%=change(user.getCollege())%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">身份证号</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="id" required="required"
-									value="<%=user.getId()%>">
+									value="<%=change(user.getId())%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">学号</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="sno" required="required"
-									value="<%=user.getSno()%>">
+									value="<%=change(user.getSno())%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">联系电话</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="phone" required="required"
-									value="<%=user.getPhone()%>">
+									value="<%=change(user.getPhone())%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">EMAIL</label>
 							<div class="col-sm-7">
 								<input type="email" class="form-control" name="email" required="required"
-									value="<%=user.getEmail()%>">
+									value="<%=change(user.getEmail())%>">
 							</div>
 						</div>
 						<div class="form-group">

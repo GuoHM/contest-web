@@ -1,11 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="bean.Teaminfo"%>
+<%@page import="bean.TeaminfoId"%>
+<%@page import="java.util.*"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	Teaminfo team = (Teaminfo) session.getAttribute("team");
+	ResourceBundle res = ResourceBundle.getBundle("school");
+	if (team == null) {
+		team = new Teaminfo();
+		TeaminfoId id = new TeaminfoId();
+		team.setId(id);
+	}
 %>
+<%!public String change(String s) {
+		if (s != null) {
+			return s;
+		}
+		return "";
+	}%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +31,6 @@
 <link rel="stylesheet" href="<%=basePath%>/css/style.css">
 <link rel="stylesheet" href="<%=basePath%>/css/bootstrap.css">
 <link rel="stylesheet" href="<%=basePath%>/css/bootstrapValidator.min.css">
-<%
-	Teaminfo team = (Teaminfo) session.getAttribute("team");
-%>
 </head>
 <body onload="today()">
 	<jsp:include page="../UtilPages/header.jsp" />
@@ -60,14 +72,14 @@
 							<label class="col-sm-4 control-label">队名</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="teamname" placeholder="请输入队名"
-									required="required" value="<%=team.getId().getTeamName()%>">
+									required="required" value="<%=change(team.getId().getTeamName())%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">作品名称</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="worksname" placeholder="请输入作品名"
-									required="required" value="<%=team.getId().getWorksName()%>">
+									required="required" value="<%=change(team.getId().getWorksName())%>">
 							</div>
 						</div>
 						<div class="form-group">
@@ -114,7 +126,7 @@
 							<label class="col-sm-4 control-label">队员1身份证</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="id" placeholder="请输入身份证" required="required"
-									value="<%=team.getId().getId1()%>">
+									value="<%=change(team.getId().getId1())%>">
 							</div>
 						</div>
 
@@ -122,7 +134,7 @@
 							<label class="col-sm-4 control-label">队员2身份证</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="id1" placeholder="请输入身份证" required="required"
-									value="<%=team.getId().getId2()%>">
+									value="<%=change(team.getId().getId2())%>">
 							</div>
 						</div>
 
@@ -130,21 +142,21 @@
 							<label class="col-sm-4 control-label">队员3身份证</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="id2" placeholder="请输入身份证" required="required"
-									value="<%=team.getId().getId3()%>">
+									value="<%=change(team.getId().getId3())%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">指导老师姓名</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="teacher" placeholder="请输入名字"
-									required="required" value="<%=team.getId().getTeacher()%>">
+									required="required" value="<%=change(team.getId().getTeacher())%>">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-4 control-label">指导老师电话</label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" name="teacherphone" placeholder="请输入电话"
-									required="required" value="<%=team.getId().getTeacherPhone()%>">
+									required="required" value="<%=change(team.getId().getTeacherPhone())%>">
 							</div>
 						</div>
 						<div class="form-group">
@@ -174,7 +186,7 @@
     $(":radio[name='type'][value='<%=team.getId().getTypes()%>']").prop("checked", "checked");
 	$("#school option[value='<%=team.getId().getSchool()%>']").attr("selected","selected");
 	});
-    document.getElementsByName("description")[0].value="<%=team.getId().getDescription()%>";
+    document.getElementsByName("description")[0].value="<%=change(team.getId().getDescription())%>";
     </script>
 
 
