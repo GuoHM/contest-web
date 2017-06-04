@@ -56,7 +56,7 @@
 						</div>
 						<div class="form-group">
 							<label>正文</label>
-							<textarea id="container" name="content"></textarea>
+							<script id="container" name="content"></script>
 							<script type="text/javascript">
 				var ue = UE.getEditor('container');
 			    </script>
@@ -80,9 +80,9 @@
 
 	<script src="../js/main.js"></script>
 	<!-- 配置文件 -->
-	<script type="text/javascript" src="UEditor/ueditor.config.js"></script>
+	<script type="text/javascript" src="../UEditor/ueditor.config.js"></script>
 	<!-- 编辑器源码文件 -->
-	<script type="text/javascript" src="UEditor/ueditor.all.js"></script>
+	<script type="text/javascript" src="../UEditor/ueditor.all.js"></script>
 	
 </body>
 
