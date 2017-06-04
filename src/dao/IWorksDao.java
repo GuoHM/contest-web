@@ -7,6 +7,6 @@ public interface IWorksDao {
 	
 	Works getWorksByName(String name) throws Exception;
 	
-	Works getWorksByTeamNo(int teamno) throws Exception;
+	Works  getWorksByTeamNo(int i) throws Exception;
 
 }

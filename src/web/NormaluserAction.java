@@ -75,7 +75,7 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 		Teaminfo team = teaminfoDao.getTeamInfoById(user.getId());
 		TeaminfoId infoid = new TeaminfoId();
 		if (team == null) {
-			//no teaminfo record,add new record,do not need to set teamno
+			// no teaminfo record,add new record,do not need to set teamno
 			if (teamDao.getTeamByName(teamname) != null) {
 				addActionError("队名已存在");
 				return INPUT;
@@ -89,7 +89,7 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 				return INPUT;
 			}
 		} else {
-			//already has record,is modify,set a teamno
+			// already has record,is modify,set a teamno
 			infoid.setTeamNo(teaminfoDao.getTeamNoById(user.getId()));
 		}
 		boolean isIdValid = normaluserService.getUserById(id) != null && normaluserService.getUserById(id1) != null
@@ -113,7 +113,6 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 		normaluserService.enroll(info);
 		return "normal";
 	}
-
 
 	private boolean isEnroll(String id, String id1, String id2) throws Exception {
 		return normaluserService.getUserById(id).getTeamNo() != null

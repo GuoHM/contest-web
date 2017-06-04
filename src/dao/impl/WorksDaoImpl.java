@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import bean.Adminuser;
+import bean.Team;
 import bean.Works;
 import dao.IWorksDao;
 
@@ -29,20 +30,19 @@ public class WorksDaoImpl extends HibernateDaoSupport implements IWorksDao {
 		}
 		return works;
 	}
-
+	
 	@Override
 	public Works getWorksByTeamNo(int teamno) throws Exception {
-		// TODO Auto-generated method stub
-		String hql = "from Works where teamNo=?";
+		String hql = "from Team where teamNo=?";
 		Session session = null;
-		Works works = null;
+		Team team = null;
 		try {
 			session = getSession();
-			works = (Works) session.createQuery(hql).setParameter(0, teamno).uniqueResult();
+			team = (Team) session.createQuery(hql).setParameter(0, teamno).uniqueResult();
 		} finally {
 			releaseSession(session);
 		}
-		return works;
+		return team.getWorks();
 	}
 	
 	
