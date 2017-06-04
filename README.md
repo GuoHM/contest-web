@@ -67,7 +67,7 @@ Hibernate 3.2+Spring 4.1+Struts2+MySQL
 </tr>
 <tr>
 <td>2017.6.4</td>
-<td>fix some bug in the pages</td>
+<td>Fix some bug in the pages,finish modify enroll comp function</td>
 </tr>
 </table>
 
