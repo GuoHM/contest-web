@@ -60,5 +60,9 @@
 		<action name="addNews" method="addNews" class="adminuserAction">
 		    <result name="success">/AdminUserPages/AdminUser.jsp</result>
 		</action>
+		
+		<action name="initEnroll" method="initEnroll" class="normaluserAction">
+		    <result name="success">/NormalUserPages/EnrollComp.jsp</result>
+		</action>
 	</package>
 </struts>
