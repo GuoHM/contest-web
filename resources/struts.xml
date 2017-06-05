@@ -64,5 +64,9 @@
 		<action name="initEnroll" method="initEnroll" class="normaluserAction">
 		    <result name="success">/NormalUserPages/EnrollComp.jsp</result>
 		</action>
+		
+		<action name="showWorkinfo" method="showWorkinfo" class="adminuserAction">
+		    <result name="success">/AdminUserPages/WorksInfo.jsp</result>
+		</action>
 	</package>
 </struts>
