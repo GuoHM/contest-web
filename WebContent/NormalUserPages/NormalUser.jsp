@@ -31,9 +31,6 @@
 							<a href="initEnroll.action">报名比赛/修改报名信息</a>
 						</li>
 						<li>
-							<a href="<%=basePath%>/NormalUserPages/UploadWork.jsp">参赛作品上传</a>
-						</li>
-						<li>
 							<a href="<%=basePath%>/NormalUserPages/ModifyPassword.jsp">修改密码</a>
 						</li>
 					</ul>

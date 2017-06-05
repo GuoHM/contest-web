@@ -47,9 +47,6 @@
 								<a href="initEnroll.action">报名比赛/修改报名信息</a>
 							</li>
 							<li>
-								<a href="<%=basePath%>/NormalUserPages/UploadWork.jsp">参赛作品上传</a>
-							</li>
-							<li>
 								<a href="<%=basePath%>/NormalUserPages/ModifyPassword.jsp">修改密码</a>
 							</li>
 						</ul>
@@ -172,6 +169,9 @@
 								</label>
 								<label class="checkbox-inline">
 									<input type="reset" value="重置" class="btn btn-default">
+								</label>
+								<label class="checkbox-inline">
+									<input type="file" value="作品上传" class="btn btn-default">
 								</label>
 							</div>
 						</div>

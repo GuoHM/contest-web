@@ -31,6 +31,7 @@
 				<th data-field="college">学院</th>
 				<th data-field="sno">学号</th>
 				<th data-field="teamno">参赛队伍</th>
+				<th data-field="action">操作</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -65,6 +66,7 @@
 							teamno = ""+ n.getTeamNo();
 						}
 						out.print("<td>" + teamno + "</td>");
+						out.print("<td><a>修改</a></td>");
 						out.print("</tr>");
 					}
 				}
