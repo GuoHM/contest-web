@@ -12,7 +12,7 @@ public interface ITeaminfoDao {
 	
 	Teaminfo getTeamInfoById(String id) throws Exception;
 	
-	Teaminfo getTeamInfoByTeamNo(String teamno) throws Exception;
+	Teaminfo getTeamInfoByTeamNo(int teamno) throws Exception;
 	
 	int getTeamNoById(String id) throws Exception;
 	

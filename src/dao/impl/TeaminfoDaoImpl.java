@@ -83,9 +83,19 @@ public class TeaminfoDaoImpl extends HibernateDaoSupport implements ITeaminfoDao
 	}
 
 	@Override
-	public Teaminfo getTeamInfoByTeamNo(String teamno) throws Exception {
+	public Teaminfo getTeamInfoByTeamNo(int teamno) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		String hql;
+		hql = "from Teaminfo t where t.id.teamNo=?";
+		Session session = null;
+		Teaminfo team = null;
+		try {
+			session = getSession();
+			team =  (Teaminfo) session.createQuery(hql).setParameter(0, teamno).uniqueResult();
+		} finally {
+			releaseSession(session);
+		}
+		return team;
 	}
 
 	@Override
