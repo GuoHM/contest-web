@@ -71,26 +71,43 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 	}
 
 	public String enrollComp() throws Exception {
-		Normaluser user = (Normaluser) context.getSession().get("login");
-		Teaminfo team = teaminfoDao.getTeamInfoById(user.getId());
+		String types = (String) context.getSession().get("type");
 		TeaminfoId infoid = new TeaminfoId();
-		if (team == null) {
-			// no teaminfo record,add new record,do not need to set teamno
-			if (teamDao.getTeamByName(teamname) != null) {
-				addActionError("队名已存在");
-				return INPUT;
-			}
-			if (worksDao.getWorksByName(worksname) != null) {
-				addActionError("作品名已存在");
-				return INPUT;
-			}
-			if (isEnroll(id, id1, id2)) {
-				addActionError("请确保3个队员都没有注册过其他队伍");
-				return INPUT;
+		Teaminfo team = new Teaminfo();
+		if (types.equals("1")) {
+			/**
+			 * is a normaluser,get the teaminfo by this student's id,and then
+			 * check whether is an insertion or a modification
+			 */
+			team = teaminfoDao.getTeamInfoById(id);
+			if (team == null) {
+				/**
+				 * no teaminfo record,is an insertion,do not need to set
+				 * teamno,and need to validate the information before insert
+				 * into the database
+				 */
+				if (teamDao.getTeamByName(teamname) != null) {
+					addActionError("队名已存在");
+					return INPUT;
+				}
+				if (worksDao.getWorksByName(worksname) != null) {
+					addActionError("作品名已存在");
+					return INPUT;
+				}
+				if (isEnroll(id, id1, id2)) {
+					addActionError("请确保3个队员都没有注册过其他队伍");
+					return INPUT;
+				}
+			} else {
+				// already has record,is modification,set a teamno
+				infoid.setTeamNo(teaminfoDao.getTeamNoById(id));
 			}
 		} else {
-			// already has record,is modify,set a teamno
-			infoid.setTeamNo(teaminfoDao.getTeamNoById(user.getId()));
+			/**
+			 * is schooluser or adminuser,just modification the teaminfo
+			 */
+			team = teaminfoDao.getTeamInfoById(id);
+			infoid=team.getId();
 		}
 		boolean isIdValid = normaluserService.getUserById(id) != null && normaluserService.getUserById(id1) != null
 				&& normaluserService.getUserById(id2) != null;
@@ -108,10 +125,14 @@ public class NormaluserAction extends ActionSupport implements ServletRequestAwa
 		infoid.setId1(id);
 		infoid.setId2(id1);
 		infoid.setId3(id2);
-		Teaminfo info = new Teaminfo();
-		info.setId(infoid);
-		normaluserService.enroll(info);
-		return "normal";
+		team.setId(infoid);
+		normaluserService.enroll(team);
+		switch(types) {
+		case "1":return "successnormal";
+		case "2":return "successschool";
+		case "3":return "successadmin";
+		}
+		return null;
 	}
 
 	private boolean isEnroll(String id, String id1, String id2) throws Exception {

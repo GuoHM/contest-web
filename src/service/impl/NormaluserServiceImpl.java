@@ -58,6 +58,7 @@ public class NormaluserServiceImpl implements INormaluserService {
 		/**
 		 * change table WorksInfo,set description,shooluser,types and worksname
 		 */
+		System.out.println(team.getId().getTeamNo());
 		Works works = worksDao.getWorksByTeamNo(team.getId().getTeamNo());
 		if (works == null) {
 			// is add

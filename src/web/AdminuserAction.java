@@ -99,13 +99,30 @@ public class AdminuserAction extends ActionSupport implements ServletRequestAwar
 	public String showWorkinfo() throws Exception {
 		Teaminfo team = teaminfoDao.getTeamInfoByTeamNo(currentTeam);
 		context.getSession().put("current", team);
+		context.getSession().put("show", "ShowModify");
+		String type = (String) context.getSession().get("type");
+		switch(type) {
+		case "2":return "successschool";
+		case "3":return "successadmin";
+		}
+		return SUCCESS;
+	}
+	
+	public String viewWorkInfo() throws Exception {
+		Teaminfo team = teaminfoDao.getTeamInfoByTeamNo(currentTeam);
+		context.getSession().put("current", team);
 		Normaluser user1 = normaluserDao.getNormaluserById(id1);
 		context.getSession().put("user1", user1);
 		Normaluser user2 = normaluserDao.getNormaluserById(id2);
 		context.getSession().put("user2", user2);
 		Normaluser user3 = normaluserDao.getNormaluserById(id3);
 		context.getSession().put("user3", user3);
-		context.getSession().put("show", "true");
+		context.getSession().put("show", "showStudent");
+		String type = (String) context.getSession().get("type");
+		switch(type) {
+		case "2":return "successschool";
+		case "3":return "successadmin";
+		}
 		return SUCCESS;
 	}
 
