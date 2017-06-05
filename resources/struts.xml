@@ -25,48 +25,58 @@
 			<result name="input">/regist.jsp</result>
 		</action>
 		<action name="fillInfo" method="fillInfo" class="normaluserAction">
-		    <result name="success">/NormalUserPages/NormalUser.jsp</result>
-		    <result name="input">/NormalUserPages/FillInfo.jsp</result>
+			<result name="success">/NormalUserPages/NormalUser.jsp</result>
+			<result name="input">/NormalUserPages/FillInfo.jsp</result>
 		</action>
 		<action name="modifyPwd" method="modifyPwd" class="allAction">
-		    <result name="inputnormal">/NormalUserPages/ModifyPassword.jsp</result>
-		    <result name="inputschool">/SchoolUserPages/ModifyPassword.jsp</result>
-		    <result name="inputadmin">/AdminUserPages/ModifyPassword.jsp</result>
+			<result name="inputnormal">/NormalUserPages/ModifyPassword.jsp</result>
+			<result name="inputschool">/SchoolUserPages/ModifyPassword.jsp</result>
+			<result name="inputadmin">/AdminUserPages/ModifyPassword.jsp</result>
 		</action>
 		<action name="enroll" method="enrollComp" class="normaluserAction">
-		    <result name="input">/NormalUserPages/EnrollComp.jsp</result>
+			<result name="input">/NormalUserPages/EnrollComp.jsp</result>
+			<result name="successnormal">/NormalUserPages/NormalUser.jsp</result>
+			<result name="successschool">/SchoolUserPages/WorksInfo.jsp</result>
+			<result name="successadmin">/AdminUserPages/WorksInfo.jsp</result>
 		</action>
-		
+
 		<action name="list" method="listAll" class="schooluserAction">
-		    <result name="success">/SchoolUserPages/ListStudent.jsp</result>
+			<result name="success">/SchoolUserPages/ListStudent.jsp</result>
 		</action>
-		
+
 		<action name="adminListStudent" method="listNormaluser" class="adminuserAction">
-		    <result name="success">/AdminUserPages/ListStudent.jsp</result>
+			<result name="success">/AdminUserPages/ListStudent.jsp</result>
 		</action>
-		
-		<action name="adminListSchooluser" method="listSchooluser" class="adminuserAction">
-		    <result name="success">/AdminUserPages/ListSchoolUsers.jsp</result>
+
+		<action name="adminListSchooluser" method="listSchooluser"
+			class="adminuserAction">
+			<result name="success">/AdminUserPages/ListSchoolUsers.jsp</result>
 		</action>
-		
+
 		<action name="schoolListTeaminfo" method="listTeaminfo" class="schooluserAction">
-		    <result name="success">/SchoolUserPages/WorksInfo.jsp</result>
+			<result name="success">/SchoolUserPages/WorksInfo.jsp</result>
 		</action>
-		
+
 		<action name="adminlistTeaminfo" method="listTeamsInfo" class="adminuserAction">
-		    <result name="success">/AdminUserPages/WorksInfo.jsp</result>
+			<result name="success">/AdminUserPages/WorksInfo.jsp</result>
 		</action>
-		
+
 		<action name="addNews" method="addNews" class="adminuserAction">
-		    <result name="success">/AdminUserPages/AdminUser.jsp</result>
+			<result name="success">/AdminUserPages/AdminUser.jsp</result>
 		</action>
-		
+
 		<action name="initEnroll" method="initEnroll" class="normaluserAction">
-		    <result name="success">/NormalUserPages/EnrollComp.jsp</result>
+			<result name="success">/NormalUserPages/EnrollComp.jsp</result>
 		</action>
-		
+
 		<action name="showWorkinfo" method="showWorkinfo" class="adminuserAction">
-		    <result name="success">/AdminUserPages/WorksInfo.jsp</result>
+			<result name="successadmin">/AdminUserPages/WorksInfo.jsp</result>
+			<result name="successschool">/SchoolUserPages/WorksInfo.jsp</result>
+		</action>
+
+		<action name="viewWorkInfo" method="viewWorkInfo" class="adminuserAction">
+			<result name="successadmin">/AdminUserPages/WorksInfo.jsp</result>
+			<result name="successschool">/SchoolUserPages/WorksInfo.jsp</result>
 		</action>
 	</package>
 </struts>
