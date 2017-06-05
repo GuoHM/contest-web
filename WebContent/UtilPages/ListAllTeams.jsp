@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="bean.*"%>
 <%@page import="java.util.*"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	String show = (String) session.getAttribute("show");
 %>
 
 <script src="<%=basePath%>/js/bootstrap-table.js"></script>
 <script src="<%=basePath%>/js/bootstrap-table-zh-CN.js"></script>
 <script src="<%=basePath%>/js/initTable.js"></script>
 <link href="<%=basePath%>/css/bootstrap-table.css" rel="stylesheet" />
+
 
 <div class="panel-body" style="padding-bottom: 0px;">
 
@@ -33,7 +36,6 @@
 				ResourceBundle res = ResourceBundle.getBundle("school");
 				ResourceBundle type = ResourceBundle.getBundle("type");
 				List<Teaminfo> teamslist = (List) session.getAttribute("teamslist");
-				int i=1;
 				if (teamslist != null) {
 					for (Teaminfo n : teamslist) {
 						out.print("<tr>");
@@ -44,21 +46,24 @@
 						out.print("<td>" + res.getString(n.getId().getSchool()) + "</td>");
 						out.print("<td>" + n.getId().getTeacher() + "</td>");
 						out.print("<td>" + n.getId().getTeacherPhone() + "</td>");
-						out.print("<td><a  data-toggle=\"modal\" data-target=\"#modify\" onclick=\"modifyEnroll("+i+")\">修改</a></td>");
+						out.print("<td><a href=\"showWorkinfo.action?currentTeam=" + n.getId().getTeamNo() + "&id1="
+								+ n.getId().getId1() + "&id2=" + n.getId().getId2() + "&id3=" + n.getId().getId3()
+								+ "\">操作</a></td>");
 						out.print("</tr>");
-						i++;
 					}
+				}
+				Teaminfo team = (Teaminfo) session.getAttribute("current");
+				Normaluser user1 = (Normaluser) session.getAttribute("user1");
+				Normaluser user2 = (Normaluser) session.getAttribute("user2");
+				Normaluser user3 = (Normaluser) session.getAttribute("user3");
+				if (team == null) {
+					TeaminfoId teaminfoid = new TeaminfoId();
+					team = new Teaminfo();
+					team.setId(teaminfoid);
 				}
 			%>
 		</tbody>
 	</table>
-
-
-	<script type="text/javascript">
-	   function onclick(n) {
-	       
-	   }
-	</script>
 
 
 	<div class="modal fade" id="modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -85,14 +90,14 @@
 						<label class="col-sm-4 control-label">队名</label>
 						<div class="col-sm-7">
 							<input type="text" class="form-control" name="teamname" placeholder="请输入队名"
-								required="required" value="">
+								required="required" value="<%=team.getId().getTeamName()%>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-4 control-label">作品名称</label>
 						<div class="col-sm-7">
 							<input type="text" class="form-control" name="worksname" placeholder="请输入作品名"
-								required="required" value="">
+								required="required" value="<%=team.getId().getWorksName()%>">
 						</div>
 					</div>
 					<div class="form-group">
@@ -139,7 +144,7 @@
 						<label class="col-sm-4 control-label">队员1身份证</label>
 						<div class="col-sm-7">
 							<input type="text" class="form-control" name="id" placeholder="请输入身份证" required="required"
-								value="">
+								value="<%=team.getId().getId1()%>">
 						</div>
 					</div>
 
@@ -147,7 +152,7 @@
 						<label class="col-sm-4 control-label">队员2身份证</label>
 						<div class="col-sm-7">
 							<input type="text" class="form-control" name="id1" placeholder="请输入身份证" required="required"
-								value="">
+								value="<%=team.getId().getId2()%>">
 						</div>
 					</div>
 
@@ -155,21 +160,21 @@
 						<label class="col-sm-4 control-label">队员3身份证</label>
 						<div class="col-sm-7">
 							<input type="text" class="form-control" name="id2" placeholder="请输入身份证" required="required"
-								value="">
+								value="<%=team.getId().getId3()%>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-4 control-label">指导老师姓名</label>
 						<div class="col-sm-7">
 							<input type="text" class="form-control" name="teacher" placeholder="请输入名字"
-								required="required" value="">
+								required="required" value="<%=team.getId().getTeacher()%>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-4 control-label">指导老师电话</label>
 						<div class="col-sm-7">
 							<input type="text" class="form-control" name="teacherphone" placeholder="请输入电话"
-								required="required" value="">
+								required="required" value="<%=team.getId().getTeacherPhone()%>">
 						</div>
 					</div>
 					<div class="form-group">
@@ -195,5 +200,18 @@
 	</div>
 	<!-- /.modal -->
 </div>
+<script type="text/javascript">
+var show = "<%=show%>";
+    if (show == "true") {
+	$(function () { $('#modify').modal({
+		keyboard: true
+	})});
+    }
+    $(function() {
+	    $(":radio[name='type'][value='<%=team.getId().getTypes()%>']").prop("checked", "checked");
+		$("#school option[value='<%=team.getId().getSchool()%>']").attr("selected","selected");
+		});
+	    document.getElementsByName("description")[0].value="<%=team.getId().getDescription()%>";
+</script>
 
-
+<%session.removeAttribute("show"); %>
