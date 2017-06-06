@@ -14,6 +14,8 @@
 <script src="<%=basePath%>/js/bootstrap-table-zh-CN.js"></script>
 <script src="<%=basePath%>/js/initTable.js"></script>
 <link href="<%=basePath%>/css/bootstrap-table.css" rel="stylesheet" />
+<script src="<%=basePath%>/js/bootstrap-table-export.js"></script>
+<script src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
 
 <div class="panel-body" style="padding-bottom: 0px;">
 	

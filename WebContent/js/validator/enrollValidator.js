@@ -67,7 +67,7 @@ $(document).ready(function() {
 			message: '请不要超过100字'
 		    }
 		}
-	    }
+	    },
 	}
-    });
+    })
 });

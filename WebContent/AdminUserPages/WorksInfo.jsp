@@ -53,11 +53,12 @@
 								<jsp:include page="../UtilPages/getAllSchool.jsp"></jsp:include>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-default">提交</button>
+						<button type="submit" class="btn btn-default">确认</button>
 					</form>
 					<h3><%=schoolname%></h3>
 					<jsp:include page="../UtilPages/ListAllTeams.jsp"></jsp:include>
 				</div>
+
 			</div>
 		</div>
 	</div>
