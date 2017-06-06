@@ -170,6 +170,8 @@ public class AllAction extends ActionSupport implements ServletRequestAware {
 		}
 		return SUCCESS;
 	}
+	
+	
 
 	public void addError(String errorKey) {
 		addActionError(getText(errorKey));
