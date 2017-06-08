@@ -33,4 +33,19 @@ public class NewsDaoImpl extends HibernateDaoSupport implements INewsDao {
 		return list;
 	}
 
+	@Override
+	public News getNewsById(int id) throws Exception {
+		// TODO Auto-generated method stub
+		String hql = "from News where newsId=?";
+		Session session = null;
+		News news = null;
+		try {
+			session = getSession();
+			news = (News) session.createQuery(hql).setParameter(0, id).uniqueResult();
+		} finally {
+			releaseSession(session);
+		}
+		return news;
+	}
+
 }

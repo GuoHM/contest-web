@@ -55,12 +55,13 @@ public class AdminuserAction extends ActionSupport implements ServletRequestAwar
 			context.getSession().put("userlist", list);
 			context.getSession().put("schoolname", schoolname);
 			return SUCCESS;
+		} else {
+			List<Normaluser> list = normaluserDao.getNormalusersBySchool(school);
+			String schoolname = schoolDao.getSchoolNameByNo(school);
+			context.getSession().put("userlist", list);
+			context.getSession().put("schoolname", schoolname);
+			return SUCCESS;
 		}
-		List<Normaluser> list = normaluserDao.getNormalusersBySchool(school);
-		String schoolname = schoolDao.getSchoolNameByNo(school);
-		context.getSession().put("userlist", list);
-		context.getSession().put("schoolname", schoolname);
-		return SUCCESS;
 	}
 
 	public String listSchooluser() throws Exception {
@@ -76,12 +77,13 @@ public class AdminuserAction extends ActionSupport implements ServletRequestAwar
 			context.getSession().put("teamslist", list);
 			context.getSession().put("schoolname", schoolname);
 			return SUCCESS;
+		} else {
+			List<Teaminfo> list = teaminfoDao.getTeamsBySchool(school);
+			String schoolname = schoolDao.getSchoolNameByNo(school);
+			context.getSession().put("teamslist", list);
+			context.getSession().put("schoolname", schoolname);
+			return SUCCESS;
 		}
-		List<Teaminfo> list = teaminfoDao.getTeamsBySchool(school);
-		String schoolname = schoolDao.getSchoolNameByNo(school);
-		context.getSession().put("teamslist", list);
-		context.getSession().put("schoolname", schoolname);
-		return SUCCESS;
 	}
 
 	public String addNews() throws Exception {
@@ -107,7 +109,7 @@ public class AdminuserAction extends ActionSupport implements ServletRequestAwar
 		}
 		return SUCCESS;
 	}
-	
+
 	public String viewWorkInfo() throws Exception {
 		Teaminfo team = teaminfoDao.getTeamInfoByTeamNo(currentTeam);
 		context.getSession().put("current", team);
