@@ -78,5 +78,13 @@
 			<result name="successadmin">/AdminUserPages/WorksInfo.jsp</result>
 			<result name="successschool">/SchoolUserPages/WorksInfo.jsp</result>
 		</action>
+
+		<action name="listNews" method="listAllNews" class="allAction">
+			<result name="success">/news.jsp</result>
+		</action>
+
+		<action name="showNews" method="showNews" class="allAction">
+			<result>/UtilPages/ShowNews.jsp</result>
+		</action>
 	</package>
 </struts>
