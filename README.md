@@ -5,7 +5,7 @@
 
 <h2>Environment</h2>
 <p>
-Hibernate 3.2+Spring 4.1+Struts2+MySQL+bootstrap
+Hibernate 3.2+Spring 4.1+Struts2+MySQL+Bootstrap
 </p>
 <h2>Update Information</h2>
 <table>
