@@ -75,7 +75,7 @@ Hibernate 3.2+Spring 4.1+Struts2+MySQL
 </tr>
 <tr>
 <td>2017.6.8</td>
-<td>Fix some bug in the pages,finish the show news function</td>
+<td>Fix some bug in the pages,finish the show news function,upload the sql script and document</td>
 </tr>
 </table>
 
