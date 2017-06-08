@@ -37,7 +37,7 @@
 			<%
 				ResourceBundle res = ResourceBundle.getBundle("school");
 				ResourceBundle type = ResourceBundle.getBundle("type");
-				List<Teaminfo> teamslist = (List) session.getAttribute("teamslist");
+				List<Teaminfo> teamslist = (List<Teaminfo>) session.getAttribute("teamslist");
 				if (teamslist != null) {
 					for (Teaminfo n : teamslist) {
 						out.print("<tr>");
@@ -225,10 +225,10 @@
 					队名:<%=team.getId().getTeamName()%></label>
 				<br />
 				<label>
-					学校:<%=res.getString(team.getId().getSchool())%></label>
+					学校:<%=res.getString("" + team.getId().getSchool())%></label>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<label>
-					作品类型:<%=type.getString(team.getId().getTypes())%></label>
+					作品类型:<%=type.getString("" + team.getId().getTypes())%></label>
 				<br />
 				<label>
 					指导老师:<%=team.getId().getTeacher()%></label>
@@ -248,10 +248,10 @@
 				<label>性别:男</label>
 				<br />
 				<label>
-					学校:<%=res.getString(user1.getUniversityNo())%></label>
+					学校:<%=res.getString(""+user1.getUniversityNo())%></label>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<label>
-					年级:<%=res.getString(user1.getGrade())%></label>
+					年级:<%=res.getString(""+user1.getGrade())%></label>
 				<br />
 				<label>
 					专业:<%=user1.getMajor()%></label>
@@ -277,10 +277,10 @@
 				<label>性别:男</label>
 				<br />
 				<label>
-					学校:<%=res.getString(user2.getUniversityNo())%></label>
+					学校:<%=res.getString("" + user2.getUniversityNo())%></label>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<label>
-					年级:<%=res.getString(user2.getGrade())%></label>
+					年级:<%=res.getString("" + user2.getGrade())%></label>
 				<br />
 				<label>
 					专业:<%=user2.getMajor()%></label>
@@ -306,10 +306,10 @@
 				<label>性别:男</label>
 				<br />
 				<label>
-					学校:<%=res.getString(user3.getUniversityNo())%></label>
+					学校:<%=res.getString(""+user3.getUniversityNo())%></label>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<label>
-					年级:<%=res.getString(user3.getGrade())%></label>
+					年级:<%=res.getString(""+user3.getGrade())%></label>
 				<br />
 				<label>
 					专业:<%=user3.getMajor()%></label>
@@ -329,12 +329,6 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
 
 <script type="text/javascript">
 var show = "<%=show%>";

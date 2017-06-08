@@ -42,7 +42,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="<%=basePath%>/news.jsp">
+					<a href="listNews.action">
 						<span class="glyphicon glyphicon glyphicon-lock">比赛新闻</span>
 					</a>
 				</li>

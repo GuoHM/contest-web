@@ -39,20 +39,22 @@
 		<tbody>
 			<%
 				ResourceBundle res = ResourceBundle.getBundle("school");
-				List<Normaluser> userlist = (List) session.getAttribute("userlist");
+				List<Normaluser> userlist = (List<Normaluser>) session.getAttribute("userlist");
+				System.out.println(userlist);
 				String sex = null, teamno = null;
 				if (userlist != null) {
 					for (Normaluser n : userlist) {
 						out.print("<tr>");
 						out.print("<td>" + n.getUserId() + "</td>");
 						out.print("<td>" + n.getName() + "</td>");
-						switch (n.getSex()) {
-						case 1:
+						switch (""+n.getSex()) {
+						case "1":
 							sex = "男";
 							break;
-						case 2:
+						case "2":
 							sex = "女";
 							break;
+						default: sex="";
 						}
 						out.print("<td>" + sex + "</td>");
 						out.print("<td>" + n.getPhone() + "</td>");

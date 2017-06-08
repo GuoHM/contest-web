@@ -79,10 +79,7 @@
 	</div>
 
 	<script src="../js/main.js"></script>
-	<!-- 配置文件 -->
-	<script type="text/javascript" src="../UEditor/ueditor.config.js"></script>
-	<!-- 编辑器源码文件 -->
-	<script type="text/javascript" src="../UEditor/ueditor.all.js"></script>
+	
 	
 </body>
 

@@ -61,7 +61,7 @@
 				</h2>
 				<p>欢迎关注并了解比赛新闻</p>
 				<p>
-					<a class="btn" href="news.jsp">更多 »</a>
+					<a class="btn" href="listNews.action">更多 »</a>
 				</p>
 			</div>
 			<div class="col-md-4 column" style="text-align: center">

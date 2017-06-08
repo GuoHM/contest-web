@@ -1,4 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="bean.News"%>
+<%@page import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	List<News> list = (List<News>) session.getAttribute("newslist");
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +16,8 @@
 <title>比赛新闻</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="<%=basePath%>/css/style.css">
+<link rel="stylesheet" href="<%=basePath%>/css/bootstrap.css">
 </head>
 <body onload="today()">
 	<jsp:include page="UtilPages/header.jsp" />
@@ -52,17 +62,30 @@
 		</div>
 	</div>
 
-	<footer id="fh5co-footer" role="contentinfo">
-	<div class="row copyright">
-		<div class="col-md-12 text-center">
-			<p>
-				<small class="block">Copyright © 2017 Guo Haoming.All rights reserved.</small>
-			</p>
+	<div class="container" id="items">
+		<div class="text-center">
+			<h3>比赛新闻</h3>
 		</div>
+		<ul>
+			<c:forEach var="news" items="${newslist }">
+				<li>
+					<a href="showNews.action?newsid=${news.newsId }">${news.title}</a>
+				</li>
+			</c:forEach>
+		</ul>
 	</div>
+
+	<footer id="fh5co-footer" role="contentinfo">
+		<div class="row copyright">
+			<div class="col-md-12 text-center">
+				<p>
+					<small class="block">Copyright © 2017 Guo Haoming.All rights reserved.</small>
+				</p>
+			</div>
+		</div>
 	</footer>
 
-	<script src="js/main.js"></script>
+	<script src="<%=basePath%>/js/main.js"></script>
 
 </body>
 </html>
