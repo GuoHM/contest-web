@@ -81,10 +81,4 @@ Hibernate 3.2+Spring 4.1+Struts2+MySQL+Bootstrap
 
 <h2>Author</h2>
 <p>Name:Guo Haoming<br/>
-Birth:1995.12.31<br/>
-Email:fsguohm@126.com</p><br/>
-
-<h2>Author</h2>
-<p>Name:Guo Haoming<br/>
-Birth:1995.12.31<br/>
-Email:fsguohm@126.com</p><br/>
+Email:fsguohaoming@hotmail.com</p><br/>
